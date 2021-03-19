@@ -1,17 +1,19 @@
 /* Here's a test stylesheet. */
 
 body, html {
-    att: value
+    font-family: Helvetica, Arial, sans-serif;
 }
 
-html {
-    att: value
+.text {
+    font-size: 14pt;
 }
 
-.class-of-things {
-    att: value
+#intro {
+    color: navy;
 }
 
-#specific-thing {
-    att: value
+img {
+    height: 20vh
+    width: 20vw
+    align: center;
 }
