@@ -12,6 +12,21 @@ body, html {
     color: navy;
 }
 
+h1 {
+   font-size: 16pt;
+   font-style: bold;
+}
+
+h2 {
+    font-size: 14pt;
+    font-style: italic;
+}
+
+code {
+    font-family: courier;
+    text-indent: 50px;
+    background-color: #98bfb5';
+
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
