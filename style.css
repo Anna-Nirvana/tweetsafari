@@ -13,7 +13,9 @@ body, html {
 }
 
 img {
-    height: 20vh
-    width: 20vw
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 1000px;
     align: center;
 }
