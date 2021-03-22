@@ -16,8 +16,8 @@ body, html {
 }
 
 h1 {
-   font-size: 16pt;
-   font-style: bold;
+font-size: 16pt;
+font-style: bold;
 }
 
 h2 {
@@ -28,20 +28,21 @@ h2 {
 code {
     font-family: courier;
     text-indent: 50px;
-    background-color: #98bfb5';
+    background-color: '#98bfb5';
+}
 
 img {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
     width: 500px;
-    align: left;
+    align-items: left;
 }
     
- #gallery {
+#gallery {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
     width: 500px;
-    align: left;
+    align-items: left;
 }
