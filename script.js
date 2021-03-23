@@ -1,9 +1,11 @@
 //Mapbox.js template
 var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
-mapboxgl.accessToken = 'pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
 var map = new mapboxgl.Map({
-container: '#map1',
-style: 'mapbox://styles/mapbox/streets-v11'
+container: 'map', // container id
+style: 'mapbox://styles/mapbox/streets-v11', // style URL
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 9 // starting zoom
 });
 
 /* Leaflet template - set geo coordinates for start view:
