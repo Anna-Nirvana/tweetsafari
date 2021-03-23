@@ -3,10 +3,16 @@
 body, html {
     font-family: Helvetica, Arial, sans-serif;
     display: block;
-    /* margin: 100px; */
     padding: 20px;
 }
-#map { position: relative; top: 10%; bottom: 10%; width: 100%; height: 90vh;}
+#map { 
+    position: relative; 
+    top: 10%; 
+    bottom: 10%; 
+    width: 90%; 
+    height: 90vh;
+    position: center;
+    }
 
 .text {
     font-size: 14pt;
@@ -19,10 +25,6 @@ body, html {
 .text {
     padding-top: 20px;
     padding-bottom: 20px;
-}
-
-.leaflet-container {
-    background: #fff;
 }
 
 h1 {
@@ -44,19 +46,15 @@ code {
     text-indent: 50px;
     background-color: '#98bfb5';
 }
-
-img {
-    border: 1px solid #ddd;
+    
+#chart {
+    position: relative;
     border-radius: 4px;
     padding: 5px;
-    width: 500px;
+    max-width: 300px;
     align-items: left;
 }
-    
-#gallery {
+
+.viz {
     border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 500px;
-    align-items: left;
 }

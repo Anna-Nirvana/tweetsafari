@@ -9,11 +9,6 @@
 	<!-- Our stylesheet  -->
 	<link href='./style.css' rel='stylesheet'>
 
-	<!-- Leaflet reference
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" type="text/css"
-		crossorigin="">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js" crossorigin=""> </script> -->
-
 	<!-- Our metadata -->
 	<meta charset="utf-8">
 	<title> IDV Project II: Mapping the Twitterverse </title>
@@ -33,7 +28,7 @@
 			// Access token goes here
 			L.mapbox.accessToken = 'pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A';
 			var map = L.mapbox.map('map')
-				.setView([5, 15], 1); // center [lng, lat], zoom
+				.setView([5, 15], 2); // center [long, lat], zoom
 				L.mapbox.styleLayer('mapbox://styles/nu-ryip/ckmf5uxn1dao617p8ggx2dgui').addTo(map);
 		</script>
 	</div>
@@ -50,16 +45,12 @@
 	<code> Here's a sample of the code we used to scrape Twitter. </code>
 	</div>
 
+	<h3> Chart </h3>
 	<div id="chart" class="viz">
-		<h3> Chart </h3>
-		<!-- a placeholder for the chart -->
-		<h3></h3>
-		<h3></h3>
-		<h3></h3>
-	</div>
 
-	<div id="gallery">
-		<img src="./test.png"> </img>
+		<h3></h3>
+		<h3>a placeholder for the chart</h3>
+		<h3></h3>
 	</div>
 
 </body>
