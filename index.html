@@ -1,64 +1,66 @@
 <!doctype html>
 <html>
+
 <head>
-<!-- Our stylesheet  -->
-<link href= './style.css' rel='stylesheet'>
+	<!-- Mapbox reference -->
+	<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet'>
+	<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'> </script>
 
-<!-- Mapbox reference -->
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<!-- Our stylesheet  -->
+	<link href='./style.css' rel='stylesheet'>
 
-<!-- Stylesheet link w/ access token -->
-<link href="https://api.mapbox.com/styles/v1/nu-ryip/ckmf5uxn1dao617p8ggx2dgui.html?fresh=true&title=view&access_token=pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A" rel="stylesheet">
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+	<!-- Leaflet reference
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" type="text/css"
+		crossorigin="">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js" crossorigin=""> </script> -->
 
-<!-- Our metadata -->
-<meta charset="utf-8">
-<title> IDV Project II: Mapping the Twitterverse </title>
+	<!-- Our metadata -->
+	<meta charset="utf-8">
+	<title> IDV Project II: Mapping the Twitterverse </title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 </head>
+
 
 <body>
 	<h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
-	<h2>  Where's the wildlife? </h2>
-		<div id = "intro" class = "text">
+	<h2> Where's the wildlife? </h2>
+	<div id="intro" class="text">
 		Here's an introduction to our project. People use <a href='https://www.twitter.com/'> Twitter </a> to ...
-		</div>
+	</div>
 
-		<div id = "map" class = "viz">
-			<script>
-				// Access token goes here
-				mapboxgl.accessToken = 'pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A';
-				var map = new mapboxgl.Map({
-				container: 'map', // container id
-				style: 'mapbox://styles/mapbox/streets-v11', // style URL
-				center: [5, 15.6], // starting position [lng, lat]
-				zoom: 1 // starting zoom
-				});
-			</script>
-		</div>
+	<div id="map" class="viz">
+		<script>
+			// Access token goes here
+			L.mapbox.accessToken = 'pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A';
+			var map = L.mapbox.map('map')
+				.setView([5, 15], 1); // center [lng, lat], zoom
+				L.mapbox.styleLayer('mapbox://styles/nu-ryip/ckmf5uxn1dao617p8ggx2dgui').addTo(map);
+		</script>
+	</div>
 
-		<div id = "process" class = "text"></div> 
-		<h3> Here's a list of the steps we took to complete this project. </h3>
-			<ol>
-			<li> <b> Step 1: </b> Step 1 was... </li>
-			<li> <b> Step 2: </b> Step 2 was... </li>
-			<li> <b> Step 3: </b> Step 3 was... </li>
-			</ol>
+	<div id="process" class="text"></div>
+	<h3> Here's a list of the steps we took to complete this project. </h3>
+	<ol>
+		<li> <b> Step 1: </b> Step 1 was... </li>
+		<li> <b> Step 2: </b> Step 2 was... </li>
+		<li> <b> Step 3: </b> Step 3 was... </li>
+	</ol>
 
-		<h3> Here's our code: </h3>
-				<code> Here's a sample of the code we used to scrape Twitter. </code>
-		</div>
+	<h3> Here's our code: </h3>
+	<code> Here's a sample of the code we used to scrape Twitter. </code>
+	</div>
 
-		<div id = "chart" class = "viz">
-			<h3> Chart </h3>
-			<!-- a placeholder for the chart -->
-			<h3></h3>
-			<h3></h3>
-			<h3></h3>
-		</div>
+	<div id="chart" class="viz">
+		<h3> Chart </h3>
+		<!-- a placeholder for the chart -->
+		<h3></h3>
+		<h3></h3>
+		<h3></h3>
+	</div>
 
-		<div id = "gallery">
-				<img src = "./test.png"> </img>
-		</div>
-	
+	<div id="gallery">
+		<img src="./test.png"> </img>
+	</div>
+
 </body>
 </html>
