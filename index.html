@@ -39,13 +39,20 @@
 
 		<h3> Here's our code: </h3>
 				<code> Here's a sample of the code we used to scrape Twitter. </code>
-
 		</div>
 
-		<div id = "map1" class = "api">
-			<script src = './script.js'> </script>
+		<div id = "map" class = "api">
+			<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
+			var map = new mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/mapbox/streets-v11', // style URL
+			center: [-74.5, 40], // starting position [lng, lat]
+			zoom: 9 // starting zoom
+			});
+			</script>
 		</div>
-			
+
 		<div id = "gallery">
 				<img src = "./test.png"> </img>
 		</div>
