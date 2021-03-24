@@ -60,7 +60,7 @@ code {
     
 /* styling for the tweet box */
 #tweetBox {
-    position: absolute;
+    position: relative;
     font-family: sans-serif;
     margin-top: 5px;
     margin-left: 5px;
@@ -76,7 +76,7 @@ code {
 /* styling for the interactive menu */
 #menu {
     background: #fff;
-    position: absolute;
+    position: relative;
     z-index: 1;
     top: 10px;
     right: 10px;
