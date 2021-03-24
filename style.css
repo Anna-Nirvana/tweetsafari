@@ -74,7 +74,7 @@ code {
     }
 
 /* styling for the interactive menu */
-#menu {
+.menu {
     background: #fff;
     position: absolute;
     z-index: 1;
