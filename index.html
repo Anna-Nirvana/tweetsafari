@@ -140,7 +140,7 @@
 
 		    let filteredTweets = []; //array to keep all collected tweets
 
-		    const query = "margasatwa -is:retweet";       // we are searching for the word 'wildlife' but only in tweets that are *not* retweets since retweets never have geo information
+		    const query = "wildlife -is:retweet";       // we are searching for the word 'wildlife' but only in tweets that are *not* retweets since retweets never have geo information
 		    let response = await getRequest(query); // finally, put the request and wait for the response
 		    //console.log(response); // DEBUG
 		    const nGeoTweets = 200;     // after how many collected tweets with geo info are stopping execution>
@@ -164,7 +164,7 @@
 
 		    console.log("TWEETS WITH GEO: " +filteredTweets.length); // DEBUG
 		    console.log(filteredTweets); // DEBUG
-		    fs.writeFileSync("wildlife(indonesian).json", JSON.stringify(filteredTweets)); // Save the results to a file in the disk
+		    fs.writeFileSync("wildlife.json", JSON.stringify(filteredTweets)); // Save the results to a file in the disk
 		    process.exit(); // terminates the program
 		})();
 
