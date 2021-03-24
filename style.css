@@ -59,7 +59,7 @@ code {
     border: 1px solid #ddd;
     
 /* styling for the tweet box */
-#tweetBox {
+.tweetBox {
     position: relative;
     font-family: sans-serif;
     margin-top: 5px;
@@ -74,7 +74,7 @@ code {
     }
 
 /* styling for the interactive menu */
-.menu {
+#menu {
     background: #fff;
     position: absolute;
     z-index: 1;
