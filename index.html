@@ -33,13 +33,21 @@
 			</ul>
 		</p>
 	</div>
-
-
-	<!-- display filter menu -->
-	<div class='menu'> </div>
 	
 	<!-- display map -->
-	<div id="map" class="viz">
+	<div id="map" class="viz"> </map>
+
+	<!-- display tweet deets -->
+	<div class='tweetBox'>
+	    <div><strong>Tweet:</strong> <span id='tweet'></span></div>
+	    <div><strong>User:</strong> <span id='user'></span></div>
+	    <div><strong>Date:</strong> <span id='date'></span></div>
+	</div>
+	
+	<!-- display filter menu -->
+	<div id='menu' -->
+	
+	<!--build map with Mapbox GL JS script -->
 	<script>
          
 	    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
@@ -89,13 +97,6 @@
 	    }
 
 	</script>
-	</div>
-	
-	<!-- display tweet deets -->
-	<div id='tweetBox'>
-	    <div><strong>Tweet:</strong> <span id='tweet'></span></div>
-	    <div><strong>User:</strong> <span id='user'></span></div>
-	    <div><strong>Date:</strong> <span id='date'></span></div>
 	</div>
 
 	<div id="process" class="text"></div>
