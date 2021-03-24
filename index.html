@@ -22,7 +22,7 @@
 	<div id="intro" class="text">
 		Here's an introduction to our project. People use <a href='https://www.twitter.com/'> Twitter </a> to ...
 		<p> 
-			Wildlife is all around us. Sometimes we take notice and note them on <a href='https://www.twitter.com/'> Twitter </a>. This project showcases the tweets that included "wildlife" in various languages listed below between March 13, 2021 and March 19, 2021.
+			Wildlife is all around us. Sometimes we take notice and note them on <a href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife" in various languages listed below between March 13, 2021 and March 19, 2021.
 			<ul>
 				<li>Arabic</li>
 				<li>English</li>
@@ -124,12 +124,10 @@
 
 				    */
 
-
 				    let xa = (tweet.place_info.geo.bbox[0] + tweet.place_info.geo.bbox[2])/2
 				    let ya = (tweet.place_info.geo.bbox[1] + tweet.place_info.geo.bbox[3])/2
 
 				    tweet.place_info.geo.center = [xa, ya];
-
 
 				}
 				array.push(tweet);
