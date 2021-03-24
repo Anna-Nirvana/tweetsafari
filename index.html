@@ -35,14 +35,69 @@
 		</p>
 	</div>
 
+
+
+	<!-- display tweet deets -->
+	<div id='tweetBox'>
+	    <div><strong>Tweet:</strong> <span id='tweet'></span></div>
+	    <div><strong>User:</strong> <span id='user'></span></div>
+	    <div><strong>Date:</strong> <span id='date'></span></div>
+	</div>
+
+	<!-- display filter menu -->
+	<div id='menu'> </div>
+	
+	<!-- display map -->
 	<div id="map" class="viz">
-		<script>
-			// Access token goes here
-			L.mapbox.accessToken = 'pk.eyJ1IjoibnUtcnlpcCIsImEiOiJja201Nzdia2swYmh4Mm9xYmJ5cDk4aHVrIn0.vB38tUtuXc1dV28hICwO1A';
-			var map = L.mapbox.map('map')
-				.setView([5, 15], 2); // center [long, lat], zoom
-				L.mapbox.styleLayer('mapbox://styles/nu-ryip/ckmmi17p22cn617qsi9p2xcx4').addTo(map);
-		</script>
+	<script>
+         
+	    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
+	    var map = new mapboxgl.Map({
+	    container: 'map', // container id
+	    style: 'mapbox://styles/anna-nirvana/ckmnzli9f7g1517qlg3wunr12', // custom style url from https://studio.mapbox.com/
+	    center: [5, 15], // starting position
+	    zoom: 2, // starting zoom
+	    layout: {
+	    // make layer visible by default
+	    'visibility': 'visible',
+	    }
+	    });
+
+	    // EXPERIMENTAL FILTER CODE
+	    //enumerate ids of the layers
+	    var toggleableLayerIds = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
+
+	    // set up the corresponding toggle button for each layer
+	    for (var i = 0; i < toggleableLayerIds.length; i++) {
+	    var id = toggleableLayerIds[i];
+
+	    var link = document.createElement('a');
+	    link.href = '#';
+	    link.className = 'active';
+	    link.textContent = id;
+
+	    link.onclick = function (e) {
+	    var clickedLayer = this.textContent;
+	    e.preventDefault();
+	    e.stopPropagation();
+
+	    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+	    //toggle layer visibility by changing the layout object's visibility property
+	    if (visibility === 'visible') {
+		map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+	    this.className = '';
+	    } else {
+	    this.className = 'active';
+	    map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+	    }
+	    };
+
+	    var layers = document.getElementById('menu');
+	    layers.appendChild(link);
+	    }
+
+	</script>	
 	</div>
 
 	<div id="process" class="text"></div>
