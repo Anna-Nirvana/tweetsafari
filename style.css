@@ -5,6 +5,7 @@ body, html {
     display: block;
     padding: 20px;
 }
+
 #map { 
     position: relative; 
     top: 10%; 
@@ -12,7 +13,7 @@ body, html {
     width: 90%; 
     height: 90vh;
     position: center;
-    }
+ }
 
 .text {
     font-size: 14pt;
@@ -57,7 +58,7 @@ code {
 
 .viz {
     border: 1px solid #ddd;
-    }
+}
 
 /* styling for the tweet box */
 .tweetBox {
@@ -72,7 +73,7 @@ code {
     color: #222;
     background-color: #fff;
     border-radius: 3px;
-    }
+}
 
 /* styling for the interactive menu */
 #menu {
@@ -115,5 +116,4 @@ code {
 
 #menu a.active:hover {
     background: #3074a4;
-}
 }
