@@ -5,32 +5,62 @@ body, html {
     display: block;
     padding: 0;
     margin: 0;
+    /* background-color: #3887be; */
 }
 
 #map {
-    position:fixed;
+    position: fixed;
     top: 0;
     bottom: 0;
-    width: 75%;
-    margin-left: 25%;
+    width: 100%;
+    z-index: -3;
+    /* margin-left: 25%; */
     }
 
 .sidebar {
-    width: 23%;
+    width: 25%;
+    height: 100%;
     background: #000000;
-    opacity: 80%;
+    background-blend-mode: overlay;
     padding: 15px;
     text-align: justify;
+    z-index: 2;
+    opacity: 80%;
+    position: absolute;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    padding-top:0;
 }
 
 .tabBar {
-    width: 75%;
+    width: 23%;
+    height: 50px;
     align-items: center;
     margin: 0;
-    margin-left:25%;
+    position: fixed;
+    z-index: 10;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 2px;
+    border-radius:2%;
     position: absolute;
-    background-color: navy;
-    z-index: 1;
+    opacity: 80%;
+    margin-top:90vh;
+    margin-bottom: 0vh;
+    margin-left: 0;
+}
+
+
+
+.tabButton, .button {
+    font-size: large;
+    position: sticky;
+    background-color: black;
+    color: white;
+    font-style: bold;
+    opacity: 90;
+    border-radius: 2px;
+    margin-left: 2px;
+    padding: 8px;
 }
 
 .text {
@@ -62,6 +92,10 @@ h2 {
 
 #process {
     padding: 20px;
+    margin-left: 30%;
+    display: none;
+    display: flexbox;
+    /* z-index: -2; */
 }
 
 code {
@@ -71,31 +105,35 @@ code {
 }
     
 #chart {
-    position: relative;
+    position: absolute;
     border-radius: 4px;
     padding: 5px;
     max-width: 300px;
     align-items: left;
+    margin-left: 30%;
+    display: none;
+    /* z-index: -1; */
 }
 
-.viz {
-    border: 1px solid #ddd;
-}
 
 /* styling for the tweet box */
 .tweetBox {
-    position: relative;
+    position: absolute;
     font-family: sans-serif;
-    margin-top: 5px;
-    margin-left: 5px;
+    margin-bottom: 0;
+    margin-top:80vh;
+    margin-left: 40%;
     padding: 5px;
-    width: 30%;
+    width: 45%;
+    align-items: center;
     border: 2px solid black;
     font-size: 14px;
     color: #DFF7D7;
     opacity: 30%;
     background-color: #DFF7D7;
     border-radius: 3px;
+    z-index: 1;
+
 }
 
 /* styling for the interactive menu */
@@ -103,7 +141,7 @@ code {
     background: #fff;
     position: absolute;
     z-index: 1;
-    top: 10px;
+    top: 25%;
     right: 10px;
     border-radius: 3px;
     width: 120px;
