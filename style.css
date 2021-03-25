@@ -8,18 +8,31 @@ body, html {
     /* background-color: #3887be; */
 }
 
+a {
+    color:aqua;
+}
 #map {
     position: fixed;
     top: 0;
     bottom: 0;
     width: 100%;
+    height:100vh;
     z-index: -3;
     /* margin-left: 25%; */
     }
 
+#Smokey {
+    width: 15vw;
+    height: relative;
+    position: relative;
+    align-self: center;
+    size: relative;
+    margin-left: 5vw;
+}
+
 .sidebar {
     width: 25%;
-    height: 100%;
+    height: inherit;
     background: #000000;
     background-blend-mode: overlay;
     padding: 15px;
@@ -33,34 +46,37 @@ body, html {
 }
 
 .tabBar {
-    width: 23%;
+    /* width: 23%; */
     height: 50px;
-    align-items: center;
-    margin: 0;
-    position: fixed;
-    z-index: 10;
+    /* align-items: center; */
+    /* margin: 0; */
+    position: relative;
+    /* z-index: 3; */
     font-family:Arial, Helvetica, sans-serif;
     padding: 2px;
     border-radius:2%;
-    position: absolute;
+    /* position: absolute; */
     opacity: 80%;
-    margin-top:90vh;
-    margin-bottom: 0vh;
-    margin-left: 0;
+    /* margin-top:0vh; */
+    /* margin-bottom: 20%; */
+    margin-left: 5px;
 }
 
 
 
 .tabButton, .button {
-    font-size: large;
-    position: sticky;
+    font-family: 'Montserrat', 'open sans';
+    size:0vmax;
+    position: relative;
     background-color: black;
-    color: white;
+    color: whitesmoke;
     font-style: bold;
     opacity: 90;
     border-radius: 2px;
     margin-left: 2px;
-    padding: 8px;
+    padding: 5px;
+    /* z-index: 3; */
+    margin-left: 0;
 }
 
 .text {
@@ -69,26 +85,34 @@ body, html {
 
 #intro {
     color: #DFF7D7;
+    size: smaller;
+    font-family: 'Montserrat', 'opens sans'
 }
 
-.text {
+/* .text {
     padding-top: 20px;
     padding-bottom: 20px;
     color: #F1E7CC;
-}
+} */
 
 h1 {
-font-size: 22pt;
+font-family: 'Lora', sans-serif;
+font-size: 30pt;
 font-style: bold;
+kerning:3mm;
 color: #EEB207;
 text-align: left;
+text-decoration:rgba(0, 0, 0, 0.25);
+text-decoration-style: dotted;
 }
-
+/* 
 h2 {
-    font-size: 16pt;
+    text-align: left;
+    font-size: 14pt;
     font-style: italic;
-    color: #DFF7D7;
-}
+    color: white;
+    font-family: 'Montserrat', 'open sans';
+} */
 
 #process {
     padding: 20px;
@@ -119,25 +143,28 @@ code {
 /* styling for the tweet box */
 .tweetBox {
     position: absolute;
-    font-family: sans-serif;
+    font-family: 'Roboto','sans serif';
     margin-bottom: 0;
     margin-top:80vh;
     margin-left: 40%;
     padding: 5px;
     width: 45%;
     align-items: center;
-    border: 2px solid black;
+    border: 2px solid whitesmoke;
+    border-radius: 3px;
     font-size: 14px;
     color: #110e24;
     background-color: #DFF7D7;
     border-radius: 3px;
     z-index: 1;
+    opacity: 80%;
 
 }
 
 /* styling for the interactive menu */
 #menu {
-    background: #fff;
+    background: #b9b6bd;
+    opacity: 80%;
     position: absolute;
     z-index: 1;
     top: 25%;
@@ -146,11 +173,12 @@ code {
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Open Sans', sans-serif;
+    color:Black;
 }
 
 #menu a {
     font-size: 13px;
-    color: #404040;
+    color: black;
     display: block;
     margin: 0;
     padding: 0;
@@ -165,15 +193,15 @@ code {
 }
 
 #menu a:hover {
-    background-color: #f8f8f8;
-    color: #404040;
+    background-color: white;
+    color: #5ac282;
 }
 
 #menu a.active {
-    background-color: #3887be;
-    color: #DFF7D7;
+    background-color:  #5ac282;
+    color: black;
 }
 
 #menu a.active:hover {
-    background: #3074a4;
+    background: #51ff00;
 }

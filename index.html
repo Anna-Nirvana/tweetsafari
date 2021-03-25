@@ -14,26 +14,35 @@
 	<meta charset="utf-8">
 	<title> IDV Project II: Mapping the Twitterverse </title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+
+	<!-- Font from Google -->
+	<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Lora">
 </head>
 
 <body>
 
 <div class='sidebar'>
 	<h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
-	<h2> Where's the wildlife? </h2>
+	<!-- <h2> mapping animal encounters </h2> -->
+	<div class='tabBar'>
+		<button class='tabButton' onclick="openTab('map')">Map</button>
+		<button class='tabButton' onclick="openTab('chart')">Chart</button>
+		<button class='tabButton' onclick="openTab('process')">Process & Code</button>
+		<br>
+	</div>
+		<img src = '/bear-head.png' id='Smokey'> </img>
 	<div id="intro" class="text">
-		<p> 
-			Wildlife is all around us. Sometimes we take notice and note them on <a href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife" in various languages listed below between March 13, 2021 and March 19, 2021.
-			<ul>
-				<li>Arabic</li>
-				<li>English</li>
-				<li>French</li>
-				<li>Indonesian</li>
-				<li>Portuguese</li>
-				<li>Spanish</li>
-				<li>Thai</li>
-			</ul>
-		</p>
+		Wildlife is all around us. Sometimes we take notice and note them on <a href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife" in various languages listed below between March 13, 2021 and March 19, 2021.
+		<ul>
+			<li>Arabic: #الحيواناتالبرية</li>
+			<li>English: #wildlife </li>
+			<li>French: #faune </li>
+			<li>Indonesian: #margasatwa </li>
+			<li>Portuguese: # </li>
+			<li>Spanish: #animaisselvagens </li>
+			<li>Thai: #สัตว์ป่า </li> 
+		</ul>
 	</div>
 </div>
 		
@@ -182,6 +191,7 @@
 	<!-- display tweet deets -->
 	<div class='tweetBox'>
 		<div><strong>Tweet:</strong> <span id='tweet'></span></div>
+		<br>
 		<div><strong>Date:</strong> <span id='date'></span></div>
 	</div>
 	
@@ -205,7 +215,7 @@
 		}
 		});
 
-		// FILTER BY LANGUAGE
+		// FILTER BY LANGUAGE LAYER
 		//enumerate ids of the layers
 		var toggleableLayerIds = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
 
@@ -240,72 +250,68 @@
 		}
 	</script>
 
-<div class='tabBar'>
-	<button class='tabButton' onclick="openTab('map')">Map</button>
-	<button class='tabButton' onclick="openTab('chart')">Chart</button>
-	<button class='tabButton' onclick="openTab('process')">Process & Code</button>
-</div>
-
-<!-- Display Tweet text and created_at date in the "tweet box" -->
+<!-- display tweet text and created_at date in the "tweet box" -->
 <script>
 var tweetDisplay = document.getElementById('tweet');
 var dateDisplay = document.getElementById('date');
 var tweetID = null;
 // var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
 
-map.on('mousemove', 'English', (l) => {
+// allLang.eachLayer(function (layer) {
 
-	map.getCanvas().style.cursor = 'pointer';
-	// Set variables equal to the current tweet's user, text, and date
-	var tweetText = (l.features[0].properties.text);
-	var tweetDate = (l.features[0].properties.created_at);
+	map.on('mousemove', 'English', (l) => {
 
-	// Check whether features exist
-	if (l.features.length > 0) {
-		// Display the magnitude, location, and time in the TweetBox
-		tweetDisplay.textContent = tweetText;
-		dateDisplay.textContent = tweetDate;
+		map.getCanvas().style.cursor = 'pointer';
+		// set variables equal to the current tweet's text and date
+		var tweetText = (l.features[0].properties.text);
+		var tweetDate = (l.features[0].properties.created_at);
 
-		// If tweetID for the hovered feature is not null,
-		// use removeFeatureState to reset to the default behavior
-		if (tweetID) {
-		map.removeFeatureState({
-			source: 'English',
-			id: id,
+		// check whether features exist
+		if (l.features.length > 0) {
+			// display the magnitude, location, and time in the tweet box
+			tweetDisplay.textContent = tweetText;
+			dateDisplay.textContent = tweetDate;
+
+			// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
+			if (tweetID) {
+			map.removeFeatureState({
+				source: allLang,
+				id: id,
+			});
+			};
+
+			tweetID = l.features[0].id;
+
+			// when the mouse moves over the layer, update the feature state for the feature under the mouse
+			map.setFeatureState({
+			source: allLang,
+			id: tweetID,
+			}, 
+			{ hover: true }
+			);
+		}
 		});
+
+	map.on('mouseleave', 'English', function() {
+		if (tweetID) {
+		map.setFeatureState({
+			source: allLang,
+			id: tweetID,
+			},
+			{ hover: false });
 		};
 
-		tweetID = l.features[0].id;
+		tweetID = null;
 
-		// When the mouse moves over the earthquakes-viz layer, update the feature state for the feature under the mouse
-		map.setFeatureState({
-		source: 'English',
-		id: tweetID,
-		}, 
-		{ hover: true }
-		);
-	}
-	});
+		// remove the information from the previously hovered feature from the tweet box
+		tweetDisplay.textContent = '';
+		dateDisplay.textContent = '';
 
-map.on('mouseleave', 'English', function() {
-	if (tweetID) {
-	map.setFeatureState({
-		source: 'English',
-		id: tweetID
-		},
-		{ hover: false });
-	}
+		// reset the cursor style back to map pan hand
+		map.getCanvas().style.cursor = '';
+		});
+	// });
 
-tweetID = null;
-
-// Remove the information from the previously hovered feature from the tweet box
-
-	tweetDisplay.textContent = '';
-	dateDisplay.textContent = '';
-
-// Reset the cursor style
-	map.getCanvas().style.cursor = '';
-	});
 </script>
 
 <!-- Tab navigation functionality for the map, chart, and process documentation -->
