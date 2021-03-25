@@ -31,16 +31,19 @@ body, html {
 .text {
     padding-top: 20px;
     padding-bottom: 20px;
+    color: #F1E7CC;
 }
 
 h1 {
 font-size: 18pt;
 font-style: bold;
+color: #EEB207;
 }
 
 h2 {
     font-size: 16pt;
     font-style: italic;
+    color: #DFF7D7;
 }
 
 #process {
