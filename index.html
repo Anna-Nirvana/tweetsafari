@@ -275,7 +275,7 @@ var tweetID = null;
 			// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
 			if (tweetID) {
 			map.removeFeatureState({
-				source: allLang,
+				source: 'English',
 				id: id,
 			});
 			};
@@ -284,7 +284,7 @@ var tweetID = null;
 
 			// when the mouse moves over the layer, update the feature state for the feature under the mouse
 			map.setFeatureState({
-			source: allLang,
+			source: 'allLang.English',
 			id: tweetID,
 			}, 
 			{ hover: true }
@@ -295,7 +295,7 @@ var tweetID = null;
 	map.on('mouseleave', 'English', function() {
 		if (tweetID) {
 		map.setFeatureState({
-			source: allLang,
+			source: 'allLang.English',
 			id: tweetID,
 			},
 			{ hover: false });
