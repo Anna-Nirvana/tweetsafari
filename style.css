@@ -18,6 +18,8 @@ body, html {
 .sidebar {
     width: 25%;
     background: #000000;
+    padding: 5px;
+    opacity: 80%;
 }
 
 .text {
