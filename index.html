@@ -182,7 +182,6 @@
 	<!-- display tweet deets -->
 	<div class='tweetBox'>
 		<div><strong>Tweet:</strong> <span id='tweet'></span></div>
-		<div><strong>User:</strong> <span id='user'></span></div>
 		<div><strong>Date:</strong> <span id='date'></span></div>
 	</div>
 	
@@ -247,6 +246,69 @@
 	<button class='tabButton' onclick="openTab('process')">Process & Code</button>
 </div>
 
+<!-- Display Tweet text and created_at date in the "tweet box" -->
+<script>
+var tweetDisplay = document.getElementById('tweet');
+var dateDisplay = document.getElementById('date');
+var tweetID = null;
+// var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
+
+map.on('mousemove', 'English', (l) => {
+
+	map.getCanvas().style.cursor = 'pointer';
+	// Set variables equal to the current tweet's user, text, and date
+	var tweetText = (l.features[0].properties.text);
+	var tweetDate = (l.features[0].properties.created_at);
+
+	// Check whether features exist
+	if (l.features.length > 0) {
+		// Display the magnitude, location, and time in the TweetBox
+		tweetDisplay.textContent = tweetText;
+		dateDisplay.textContent = tweetDate;
+
+		// If tweetID for the hovered feature is not null,
+		// use removeFeatureState to reset to the default behavior
+		if (tweetID) {
+		map.removeFeatureState({
+			source: 'English',
+			id: id,
+		});
+		};
+
+		tweetID = l.features[0].id;
+
+		// When the mouse moves over the earthquakes-viz layer, update the feature state for the feature under the mouse
+		map.setFeatureState({
+		source: 'English',
+		id: tweetID,
+		}, 
+		{ hover: true }
+		);
+	}
+	});
+
+map.on('mouseleave', 'English', function() {
+	if (tweetID) {
+	map.setFeatureState({
+		source: 'English',
+		id: tweetID
+		},
+		{ hover: false });
+	}
+
+tweetID = null;
+
+// Remove the information from the previously hovered feature from the tweet box
+
+	tweetDisplay.textContent = '';
+	dateDisplay.textContent = '';
+
+// Reset the cursor style
+	map.getCanvas().style.cursor = '';
+	});
+</script>
+
+<!-- Tab navigation functionality for the map, chart, and process documentation -->
 <script>
 	function openTab(tabName) {
 		var i;
