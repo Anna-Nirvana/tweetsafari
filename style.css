@@ -62,10 +62,15 @@ a {
     margin-left: 5px;
 }
 
-
+li {
+    font-weight: lighter;
+    background-color: #394053;
+    background-blend-mode: color-burn;
+    border-radius: 2px;
+}
 
 .tabButton, .button {
-    font-family: 'Montserrat', 'open sans';
+    font-family: 'Playfair Display', 'open sans';
     size:0vmax;
     position: relative;
     background-color: black;
@@ -75,6 +80,7 @@ a {
     border-radius: 2px;
     margin-left: 2px;
     padding: 5px;
+    align-items: center;
     /* z-index: 3; */
     margin-left: 0;
 }
@@ -84,9 +90,9 @@ a {
 }
 
 #intro {
-    color: #DFF7D7;
+    color: #F2F1EB;
     size: smaller;
-    font-family: 'Montserrat', 'opens sans'
+    font-family: 'Playfair Display', 'opens sans'
 }
 
 /* .text {
@@ -96,11 +102,11 @@ a {
 } */
 
 h1 {
-font-family: 'Lora', sans-serif;
+font-family: 'Playfair Display', sans-serif;
 font-size: 30pt;
-font-style: bold;
+font-weight:lighter;
 kerning:3mm;
-color: #EEB207;
+color: #E6EBD8;
 text-align: left;
 text-decoration:rgba(0, 0, 0, 0.25);
 text-decoration-style: dotted;
@@ -143,22 +149,20 @@ code {
 /* styling for the tweet box */
 .tweetBox {
     position: absolute;
-    font-family: 'Roboto','sans serif';
+    font-family: 'Playfair Display','sans serif';
     margin-bottom: 0;
     margin-top:80vh;
     margin-left: 40%;
     padding: 5px;
     width: 45%;
     align-items: center;
-    border: 2px solid whitesmoke;
     border-radius: 3px;
     font-size: 14px;
-    color: #110e24;
-    background-color: #DFF7D7;
+    color: #000000;
+    background-color:#f2f1eb;
     border-radius: 3px;
     z-index: 1;
     opacity: 80%;
-
 }
 
 /* styling for the interactive menu */
@@ -172,7 +176,7 @@ code {
     border-radius: 3px;
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     color:Black;
 }
 
@@ -194,14 +198,15 @@ code {
 
 #menu a:hover {
     background-color: white;
-    color: #5ac282;
+    color:#000000;
 }
 
 #menu a.active {
-    background-color:  #5ac282;
-    color: black;
+    background-color:  #e6ebd8;
+    color: #000000;
 }
 
 #menu a.active:hover {
-    background: #51ff00;
+    background: #394053;
+    color: #f2f1eb;
 }

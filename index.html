@@ -15,9 +15,9 @@
 	<title> IDV Project II: Mapping the Twitterverse </title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 
-	<!-- Font from Google -->
+	<!-- Playfair font family from Google -->
 	<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Lora">
+	href="https://fonts.googleapis.com/css?family=Playfair%20Display">
 </head>
 
 <body>
@@ -255,11 +255,13 @@
 var tweetDisplay = document.getElementById('tweet');
 var dateDisplay = document.getElementById('date');
 var tweetID = null;
-// var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
+var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
 
 // allLang.eachLayer(function (layer) {
 
-	map.on('mousemove', 'English', (l) => {
+let hover = function(lang) {
+
+	map.on('mousemove', lang, (l) => {
 
 		map.getCanvas().style.cursor = 'pointer';
 		// set variables equal to the current tweet's text and date
@@ -275,7 +277,7 @@ var tweetID = null;
 			// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
 			if (tweetID) {
 			map.removeFeatureState({
-				source: 'English',
+				source: lang,
 				id: id,
 			});
 			};
@@ -284,7 +286,7 @@ var tweetID = null;
 
 			// when the mouse moves over the layer, update the feature state for the feature under the mouse
 			map.setFeatureState({
-			source: 'allLang.English',
+			source: lang,
 			id: tweetID,
 			}, 
 			{ hover: true }
@@ -292,10 +294,10 @@ var tweetID = null;
 		}
 		});
 
-	map.on('mouseleave', 'English', function() {
+	map.on('mouseleave', lang, function() {
 		if (tweetID) {
 		map.setFeatureState({
-			source: 'allLang.English',
+			source: lang,
 			id: tweetID,
 			},
 			{ hover: false });
@@ -310,7 +312,13 @@ var tweetID = null;
 		// reset the cursor style back to map pan hand
 		map.getCanvas().style.cursor = '';
 		});
-	// });
+
+	};
+
+	allLang.forEach(function(lang) {
+		hover(lang);
+
+	});
 
 </script>
 
