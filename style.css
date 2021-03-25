@@ -8,7 +8,7 @@ body, html {
 }
 
 #map {
-    position: absolute;
+    position:fixed;
     top: 0;
     bottom: 0;
     width: 75%;
@@ -16,10 +16,21 @@ body, html {
     }
 
 .sidebar {
-    width: 25%;
+    width: 23%;
     background: #000000;
     opacity: 80%;
-    margin: 5px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.tabBar {
+    width: 75%;
+    align-items: center;
+    margin: 0;
+    margin-left:25%;
+    position: absolute;
+    background-color: navy;
+    z-index: 1;
 }
 
 .text {
@@ -37,9 +48,10 @@ body, html {
 }
 
 h1 {
-font-size: 18pt;
+font-size: 22pt;
 font-style: bold;
 color: #EEB207;
+text-align: left;
 }
 
 h2 {
