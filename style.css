@@ -25,7 +25,7 @@ body, html {
 }
 
 #intro {
-    color: navy;
+    color: #DFF7D7;
 }
 
 .text {
@@ -34,12 +34,12 @@ body, html {
 }
 
 h1 {
-font-size: 16pt;
+font-size: 18pt;
 font-style: bold;
 }
 
 h2 {
-    font-size: 14pt;
+    font-size: 16pt;
     font-style: italic;
 }
 
@@ -75,8 +75,9 @@ code {
     width: 30%;
     border: 2px solid black;
     font-size: 14px;
-    color: #222;
-    background-color: #fff;
+    color: #DFF7D7;
+    opacity: 30%;
+    background-color: #DFF7D7;
     border-radius: 3px;
 }
 
@@ -116,7 +117,7 @@ code {
 
 #menu a.active {
     background-color: #3887be;
-    color: #ffffff;
+    color: #DFF7D7;
 }
 
 #menu a.active:hover {
