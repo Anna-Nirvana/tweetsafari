@@ -62,6 +62,7 @@
 	<p> Here's a sample of the code we used to scrape Twitter. </p>
 
 	<pre>
+	<code>
 	const needle = require('needle'); // requires library to make HTTP requests
 	const fs = require('fs'); // requires library to save files
 	const token = "YOUR_BEARER_TOKEN"; // this is your bearer token
@@ -77,24 +78,24 @@
 
 		// builds a query object to send
 		function buildQuery() {
-		let q = {
-			"query": query,     // the query
-			"max_results": 100, // max results per request, 100 is the maximum for standard licenses in sandboxed environments
-			"expansions": "geo.place_id",   // whenever a tweet has geographical information in the form a of place_id, get more info on that place_id
-			"tweet.fields": "author_id,created_at,geo",     // by default the Tweet id and and the text are returned, but here we're also including the author_id, the time of publishing, and its geographical features
-			"place.fields": "geo,name,full_name,place_type" // the additional information associated with a place_id, namely its name and a geo object with geographical coordinates, either in the form of a point or a bounding box
-		};
-		// the nextToken paramenter is optional (as there is none in the first request
-		// but if a nextToken was passed, then it inserts it into the query object
-		if(nextToken !== undefined) q["next_token"] = nextToken;
-		return q;
+			let q = {
+				"query": query,     // the query
+				"max_results": 100, // max results per request, 100 is the maximum for standard licenses in sandboxed environments
+				"expansions": "geo.place_id",   // whenever a tweet has geographical information in the form a of place_id, get more info on that place_id
+				"tweet.fields": "author_id,created_at,geo",     // by default the Tweet id and and the text are returned, but here we're also including the author_id, the time of publishing, and its geographical features
+				"place.fields": "geo,name,full_name,place_type" // the additional information associated with a place_id, namely its name and a geo object with geographical coordinates, either in the form of a point or a bounding box
+			};
+			// the nextToken paramenter is optional (as there is none in the first request
+			// but if a nextToken was passed, then it inserts it into the query object
+			if(nextToken !== undefined) q["next_token"] = nextToken;
+			return q;
 		}
 
 		const response = await needle('get', endpointUrl, buildQuery(), {
-		headers: {
-			"User-Agent": "v2RecentSearchJS",   // Can be whatver you want
-			"authorization": "Bearer "+token    // Attaches your Bearer token to the header of the request
-		}
+			headers: {
+				"User-Agent": "v2RecentSearchJS",   // Can be whatver you want
+				"authorization": "Bearer "+token    // Attaches your Bearer token to the header of the request
+			}
 		})
 		return response.body;   // Returns the contents of the response
 	}
@@ -108,34 +109,34 @@
 		/** an anonymous function that gets a whole batch of tweet reponses
 		*  and only adds the ones with geo information to 'array' */
 		function filterTweets(array, batch){
-		batch.data.forEach(tweet => {
-			if(tweet["geo"] !== undefined){
-			/* expands place_id */
-			if(tweet.geo["place_id"] !== undefined){
-				/* associates the place_id with the expanded information on place_ids in the response */
-				let expanded_geo = batch.includes.places.find( place => {
-				return place.id == tweet.geo.place_id;
-				});
-				// adds new variable to tweet object called 'place_info'
-				tweet.place_info = expanded_geo;
-			}
-			if(tweet['place_info']['geo']['bbox'] ==! undefined){
-				//average of the bbox
-				/*
-				bbox[0] -> x of bottom left corner
-				bbox[1] -> y of bottom left corner
-				bbox[2] -> x of top right corner
-				bbox[3] -> y of top right corner
+			batch.data.forEach(tweet => {
+				if(tweet["geo"] !== undefined){
+				/* expands place_id */
+				if(tweet.geo["place_id"] !== undefined){
+					/* associates the place_id with the expanded information on place_ids in the response */
+					let expanded_geo = batch.includes.places.find( place => {
+					return place.id == tweet.geo.place_id;
+					});
+					// adds new variable to tweet object called 'place_info'
+					tweet.place_info = expanded_geo;
+				}
+				if(tweet['place_info']['geo']['bbox'] ==! undefined){
+					//average of the bbox
+					/*
+					bbox[0] -> x of bottom left corner
+					bbox[1] -> y of bottom left corner
+					bbox[2] -> x of top right corner
+					bbox[3] -> y of top right corner
 
-				*/
+					*/
 
-				let xa = (tweet.place_info.geo.bbox[0] + tweet.place_info.geo.bbox[2])/2
-				let ya = (tweet.place_info.geo.bbox[1] + tweet.place_info.geo.bbox[3])/2
+					let xa = (tweet.place_info.geo.bbox[0] + tweet.place_info.geo.bbox[2])/2
+					let ya = (tweet.place_info.geo.bbox[1] + tweet.place_info.geo.bbox[3])/2
 
-				tweet.place_info.geo.center = [xa, ya];
+					tweet.place_info.geo.center = [xa, ya];
 
-			}
-			array.push(tweet);
+				}
+				array.push(tweet);
 			}
 		});
 
@@ -148,20 +149,20 @@
 		//console.log(response); // DEBUG
 		const nGeoTweets = 200;     // after how many collected tweets with geo info are stopping execution>
 		while(response.meta["next_token"] !== undefined){
-		response = await getRequest(query, response.meta.next_token);
-		filterTweets(filteredTweets, response);
-		console.log(filteredTweets.length); // DEBUG
-		await sleep(2100);  /*  sleeps the program for 2.1seconds : 
-					the standard rate limit is 450 requests per 15 min time period.
-					If you make more than 450 requests in less than 15 mins, the API
-					will block further requests until the 15 mins period is over;
-					Since the percentage of tweets with geo information is low you will 
-					need to place more than 450 requets (remember that each requests returns 100 tweets)
-					In order to stay under the rate limit and leave the program executing in the
-					background collecting tweets, only one request every 2 seconds should be placed */
+			response = await getRequest(query, response.meta.next_token);
+			filterTweets(filteredTweets, response);
+			console.log(filteredTweets.length); // DEBUG
+			await sleep(2100);  /*  sleeps the program for 2.1seconds : 
+						the standard rate limit is 450 requests per 15 min time period.
+						If you make more than 450 requests in less than 15 mins, the API
+						will block further requests until the 15 mins period is over;
+						Since the percentage of tweets with geo information is low you will 
+						need to place more than 450 requets (remember that each requests returns 100 tweets)
+						In order to stay under the rate limit and leave the program executing in the
+						background collecting tweets, only one request every 2 seconds should be placed */
 
-		//  if we have enough tweets, stops collecting                        
-		if(filteredTweets.length >= nGeoTweets) break;
+			//  if we have enough tweets, stops collecting                        
+			if(filteredTweets.length >= nGeoTweets) break;
 
 		}
 
@@ -175,6 +176,7 @@
 	function sleep(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
 		}
+	</code>
 	</pre>
 </div>
 
