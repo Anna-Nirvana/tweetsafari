@@ -89,12 +89,13 @@ li {
 
 .text {
     font-size: 14pt;
+    font-family: 'Helvetica', 'open sans';
 }
 
 #intro {
     color: #F2F1EB;
     size: smaller;
-    font-family: 'Helvetica', 'opens sans'
+    font-family: 'Helvetica', 'opens sans';
 }
 
 /* .text {
