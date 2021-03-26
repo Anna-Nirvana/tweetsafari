@@ -1,7 +1,7 @@
 /* Here's a test stylesheet. */
 
 body, html {
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Helvetica', sans-serif;
     display: block;
     padding: 0;
     margin: 0;
@@ -94,7 +94,7 @@ li {
 #intro {
     color: #F2F1EB;
     size: smaller;
-    font-family: 'Playfair Display', 'opens sans'
+    font-family: 'Helvetica', 'opens sans'
 }
 
 /* .text {
@@ -181,7 +181,7 @@ pre code {
 /* styling for the tweet box */
 .tweetBox {
     position: absolute;
-    font-family: 'Playfair Display','sans serif';
+    font-family: 'Helvetica','sans serif';
     margin-bottom: 0;
     margin-top:80vh;
     margin-left: 40%;
