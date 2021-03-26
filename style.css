@@ -1,7 +1,7 @@
 /* Here's a test stylesheet. */
 
 body, html {
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Arial', sans-serif;
     display: block;
     padding: 0;
     margin: 0;
@@ -89,13 +89,13 @@ li {
 
 .text {
     font-size: 14pt;
-    font-family: 'Helvetica', 'open sans';
+    font-family: 'Arial Light', 'open sans';
 }
 
 #intro {
     color: #F2F1EB;
     size: smaller;
-    font-family: 'Helvetica', 'opens sans';
+    font-family: 'Arial', 'opens sans';
 }
 
 /* .text {
@@ -182,7 +182,7 @@ pre code {
 /* styling for the tweet box */
 .tweetBox {
     position: absolute;
-    font-family: 'Helvetica','sans serif';
+    font-family: 'Arial','sans serif';
     margin-bottom: 0;
     margin-top:80vh;
     margin-left: 40%;
@@ -196,6 +196,11 @@ pre code {
     border-radius: 3px;
     z-index: 1;
     opacity: 80%;
+}
+
+.tweet, .date {
+    font-family: 'Arial', 'sans serif';
+    color: black;
 }
 
 /* styling for the interactive menu */
