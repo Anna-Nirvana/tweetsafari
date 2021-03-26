@@ -18,6 +18,10 @@
 	<!-- Playfair font family from Google -->
 	<link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Playfair%20Display">
+	
+	<!-- Prettify Code -->
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=js&amp%3Bskin=sunburst"></script>
+	
 </head>
 
 <body>
@@ -61,7 +65,8 @@
 	<h3> Here's our code: </h3>
 	<p> Here's a sample of the code we used to scrape Twitter. </p>
 
-	<pre>
+	<?prettyify linenums=1?>
+	<pre class="prettyprint">
 	<code>
 	const needle = require('needle'); // requires library to make HTTP requests
 	const fs = require('fs'); // requires library to save files
