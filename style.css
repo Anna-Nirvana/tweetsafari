@@ -139,20 +139,9 @@ pre code {
     border: 1px solid #999;
     display: block;
     padding: 20px;
-} */
+} 
 
-pre code {
-    background-color: #000;
-    border: 1px solid #999;
-    display: block;
-    padding: 20px;
-    border-radius: 8px;
-    width: 95%;
-    margin: 1em;
-    white-space: pre-wrap;
-}
-
-/* pre.prettyprint, code.prettyprint {
+pre.prettyprint, code.prettyprint {
 	background-color: #000;
 	border-radius: 8px;
 }
@@ -163,6 +152,17 @@ pre.prettyprint {
 	padding: 1em;
 	white-space: pre-wrap;
 } */
+
+pre code {
+    background-color: #98bfb5;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+    border-radius: 8px;
+    width: 95%;
+    margin: 1em;
+    white-space: pre-wrap;
+}
 
 #chart {
     position: absolute;
