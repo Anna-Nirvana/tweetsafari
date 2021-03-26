@@ -9,7 +9,7 @@ body, html {
 }
 
 a {
-    color:aqua;
+    color:rgb(29, 91, 185);
 }
 #map {
     position: fixed;
@@ -62,12 +62,14 @@ a {
     margin-left: 5px;
 }
 
+/*
 li {
     font-weight: lighter;
     background-color: #394053;
     background-blend-mode: color-burn;
     border-radius: 2px;
 }
+*/
 
 .tabButton, .button {
     font-family: 'Playfair Display', 'open sans';
