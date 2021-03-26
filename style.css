@@ -1,7 +1,7 @@
 /* Here's a test stylesheet. */
 
 body, html {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     display: block;
     padding: 0;
     margin: 0;
@@ -52,7 +52,7 @@ a {
     /* margin: 0; */
     position: relative;
     /* z-index: 3; */
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Playfair Display', sans-serif;
     padding: 2px;
     border-radius:2%;
     /* position: absolute; */
