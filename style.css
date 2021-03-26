@@ -128,6 +128,19 @@ h2 {
     /* z-index: -2; */
 }
 
+code {
+    font-family: courier;
+    text-indent: 50px;
+    background-color: '#98bfb5';
+}
+
+pre code {
+    background-color: #000;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+}
+
 pre.prettyprint, code.prettyprint {
 	background-color: #000;
 	border-radius: 8px;
