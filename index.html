@@ -152,7 +152,7 @@ async function getRequest(query, nextToken) {
 	const query = "wildlife -is:retweet";       // we are searching for the word 'wildlife' but only in tweets that are *not* retweets since retweets never have geo information
 	let response = await getRequest(query); // finally, put the request and wait for the response
 	//console.log(response); // DEBUG
-	const nGeoTweets = 200;     // after how many collected tweets with geo info are stopping execution>
+	const nGeoTweets = 500;     // after how many collected tweets with geo info are stopping execution (in this example: 500)>
 	while(response.meta["next_token"] !== undefined){
 		response = await getRequest(query, response.meta.next_token);
 		filterTweets(filteredTweets, response);
