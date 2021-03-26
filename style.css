@@ -133,6 +133,13 @@ code {
     text-indent: 50px;
     background-color: '#98bfb5';
 }
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+}
     
 #chart {
     position: absolute;
