@@ -128,19 +128,18 @@ h2 {
     /* z-index: -2; */
 }
 
-code {
-    font-family: courier;
-    text-indent: 50px;
-    background-color: '#98bfb5';
+pre.prettyprint, code.prettyprint {
+	background-color: #000;
+	border-radius: 8px;
 }
 
-pre code {
-    background-color: #eee;
-    border: 1px solid #999;
-    display: block;
-    padding: 20px;
+pre.prettyprint {
+	width: 95%;
+	margin: 1em auto;
+	padding: 1em;
+	white-space: pre-wrap;
 }
-    
+
 #chart {
     position: absolute;
     border-radius: 4px;
