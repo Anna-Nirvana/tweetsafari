@@ -198,7 +198,7 @@ pre code {
     opacity: 80%;
 }
 
-.tweet, .date {
+#tweet, #date {
     font-family: 'Arial', 'sans serif';
     color: black;
 }
