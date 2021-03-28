@@ -200,6 +200,7 @@ function sleep(ms) {
 		<div><h3 style="color:maroon; font-family:'Playfair Display';">Tweet:</style> <span id='tweet'></span></div>
 		<br>
 		<div><h3 style="color:maroon; font-family:'Playfair Display';">Date:</style> <span id='date'></span></div>
+		<div> <span> <img  id = 'tweet_media' src = ''> </img> </div>
 	</div>
 	
 	<!-- display filter menu -->
@@ -261,6 +262,7 @@ function sleep(ms) {
 <script>
 var tweetDisplay = document.getElementById('tweet');
 var dateDisplay = document.getElementById('date');
+var mediaDisplay = document.getElementById('tweet_media');
 var tweetID = null;
 var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
 
@@ -274,12 +276,18 @@ let hover = function(lang) {
 		// set variables equal to the current tweet's text and date
 		var tweetText = (l.features[0].properties.text);
 		var tweetDate = (l.features[0].properties.created_at);
+		var tweetMediaURL = 'https://pbs.twimg.com/media/ExllNcRW8AQehPV.jpg';
+		// var tweetMediaURL = (l.features[0].properties.media_url);
+		// check if undefined...
+
+		console.log(l.features);
 
 		// check whether features exist
 		if (l.features.length > 0) {
-			// display the magnitude, location, and time in the tweet box
+			// display the text, date, and relevant media in the tweet box
 			tweetDisplay.textContent = tweetText;
 			dateDisplay.textContent = tweetDate;
+			mediaDisplay.src = tweetMediaURL;
 
 			// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
 			if (tweetID) {

@@ -184,7 +184,7 @@ pre code {
     position: absolute;
     font-family: 'Arial','sans serif';
     margin-bottom: 0;
-    margin-top:80vh;
+    margin-top:10vh;
     margin-left: 40%;
     padding: 5px;
     width: 45%;
@@ -201,6 +201,8 @@ pre code {
 #tweet, #date {
     font-family: 'Arial', 'sans serif';
     color: black;
+    font-style: normal;
+    margin: -3px;
 }
 
 /* styling for the interactive menu */
