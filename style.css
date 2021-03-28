@@ -36,7 +36,7 @@ a {
     background: #000000;
     background-blend-mode: overlay;
     padding: 15px;
-    text-align: justify;
+    text-align: left;
     z-index: 2;
     opacity: 80%;
     position: absolute;
@@ -70,6 +70,10 @@ li {
     border-radius: 2px;
 }
 */
+
+li, p {
+    font-weight: lighter;
+}
 
 .tabButton, .button {
     font-family: 'Playfair Display', 'open sans';
@@ -154,7 +158,7 @@ pre.prettyprint {
 	margin: 1em auto;
 	padding: 1em;
 	white-space: pre-wrap;
-} */
+}
 
 pre code {
     background-color: #eee;
@@ -165,6 +169,17 @@ pre code {
     width: 95%;
     margin: 1em;
     white-space: pre-wrap;
+    font-weight: lighter;
+} */
+
+pre code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    width: 95%;
+    margin: 1em;
+    white-space: pre-wrap;
+    font-weight: lighter;
 }
 
 #chart {
@@ -200,6 +215,7 @@ pre code {
 
 #tweet, #date {
     font-family: 'Arial', 'sans serif';
+    font-weight: lighter;
     color: black;
     font-style: normal;
     margin: -3px;
