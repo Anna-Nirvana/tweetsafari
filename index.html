@@ -195,20 +195,9 @@ function sleep(ms) {
 
 	<!-- display tweet deets -->
 	<div class='tweetBox'>
-		<textarea id="autoresizing">
 		<div><h3 style="color:maroon; font-family:'Playfair Display';">Tweet:</style> <span id='tweet'></span></div>
 		<br>
 		<div><h3 style="color:maroon; font-family:'Playfair Display';">Date:</style> <span id='date'></span></div>
-		</textarea>
-		<script type="text/javascript">
-        		textarea = document.querySelector("#autoresizing");
-        		textarea.addEventListener('input', autoResize, false);
-     
-        		function autoResize() {
-           			this.style.height = 'auto';
-            			this.style.height = this.scrollHeight + 'px';
-        		}
-    		</script>
 	</div>
 	
 	<!-- display filter menu -->
