@@ -2,11 +2,11 @@
 <html>
 
 <head>
-	
+
 	<!-- Mapbox reference -->
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-	
+
 	<!-- Our stylesheet  -->
 	<link href='./style.css' rel='stylesheet'>
 
@@ -16,57 +16,95 @@
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 
 	<!-- Playfair font family from Google -->
-	<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Playfair%20Display">
-	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair%20Display">
+
 	<!-- Prettify Code -->
-	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=js&amp%3Bskin=sunburst"></script>
-	
+	<script
+		src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=js&amp%3Bskin=sunburst"></script>
+
 </head>
 
 <body>
 
-<div class='sidebar'>
-	<h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
-	<!-- <h2> mapping animal encounters </h2> -->
-	<div class='tabBar'>
-		<button class='tabButton' onclick="openTab('map')">Map</button>
-		<button class='tabButton' onclick="openTab('chart')">Chart</button>
-		<button class='tabButton' onclick="openTab('process')">Process & Code</button>
-		<br>
+	<div class='sidebar'>
+		<h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
+		<!-- <h2> mapping animal encounters </h2> -->
+		<div class='tabBar'>
+			<button class='tabButton' onclick="openTab('map')">Map</button>
+			<button class='tabButton' onclick="openTab('chart')">Chart</button>
+			<button class='tabButton' onclick="openTab('process')">Process & Code</button>
+			<br>
+		</div>
+		<img src='./bear-head.png' id='Smokey'> </img>
+		<div id="intro" class="text">
+			Wildlife is all around us. Sometimes we take notice and share them on <a
+				href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife"
+			in various languages listed below between March 13, 2021 and March 19, 2021.
+			<ul>
+				<li> <b> Arabic: </b> الحيواناتالبرية</li>
+				<li> <b> English: </b> wildlife </li>
+				<li> <b> French: </b> faune </li>
+				<li> <b> Indonesian: </b> margasatwa </li>
+				<li> <b> Portuguese: </b> animais selvagens </li>
+				<li> <b> Spanish: </b> fauna silvestre </li>
+				<li> <b> Thai: <b> สัตว์ป่า </li>
+			</ul>
+		</div>
 	</div>
-		<img src = './bear-head.png' id='Smokey'> </img>
-	<div id="intro" class="text">
-		Wildlife is all around us. Sometimes we take notice and share them on <a href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife" in various languages listed below between March 13, 2021 and March 19, 2021.
-		<ul>
-			<li> <b> Arabic: </b> الحيواناتالبرية</li>
-			<li> <b> English: </b> wildlife </li>
-			<li> <b> French: </b> faune </li>
-			<li> <b> Indonesian: </b> margasatwa </li>
-			<li> <b> Portuguese: </b> animais selvagens </li>
-			<li> <b> Spanish: </b> fauna silvestre </li>
-			<li> <b> Thai: <b> สัตว์ป่า </li> 
-		</ul>
+
+	<!-- start display map -->
+	<div id='map' class='tab'>
+
+		<!-- display tweet deets -->
+		<div class='tweetBox'>
+			<div id='leftTBcolumn' class='box-content'>
+				<div>
+					<h3 style="color:maroon; font-family:'Playfair Display';">Tweet:  </style> <span id='tweet'></span>
+				</div>
+				<!-- <br> -->
+				<div>
+					<h3 style="color:maroon; font-family:'Playfair Display';">Date:  </style> <span id='date'></span>
+				</div>
+			</div>
+			<div id='rtTBcolumn' class='box-content'>
+				<div> <span> <img id='tweet_media' src=''> </img> </div>
+			</div>
+		</div>
+
+		<!-- display filter menu -->
+		<div id='menu' --> </div>
+
+		<!-- end display map -->
 	</div>
-</div>
-		
-<div id='process' class='tab'>
-	<h3> Here's a list of the steps we took to complete this project. </h3>
-	<ol>
-		<li> Collected data using Twitter's API using the below code</li>
-		<li> Converted the data from a JSON file to an EXCEL file for clean-up</li>
-		<li> Converted the cleaned-up EXCEL file into a CSV file</li>
-		<li> Uploaded the CSV file into <a href='https://www.mapbox.com/mapbox-studio'>Mapbox</a> and created a map</li>
-		<li> Created a GitHub repository and page</li>
-		<li> Embedded the map into HTML file within GitHub repository</li>
-		<li> Cleaned-up GitHub page</li>
-	</ol>
 
-	<h3> Here's our code: </h3>
-	<p> Here's a sample of the code we used to scrape Twitter based on <a href='https://github.com/pmiguelcruz/twitter_recent_search_v2_standard/blob/main/twitter_recent_search_v2_standard.js'>Professor Pedro Cruz's code</a>. </p>
 
-	<prettyify linenums=1>
-	<pre class="prettyprint">
+	<div id=chart class='tab'>
+		<h3> Chart </h3>
+		<h3></h3>
+		<img src="Wildlife_Stacked_Bar_Chart_v2.svg" width="500" alt="Wildlife Stacked Bar Chart" />
+		<h3></h3>
+	</div>
+
+	<div id='process' class='tab'>
+		<h3> Here's a list of the steps we took to complete this project. </h3>
+		<ol>
+			<li> Collected data using Twitter's API using the below code</li>
+			<li> Converted the data from a JSON file to an EXCEL file for clean-up</li>
+			<li> Converted the cleaned-up EXCEL file into a CSV file</li>
+			<li> Uploaded the CSV file into <a href='https://www.mapbox.com/mapbox-studio'>Mapbox</a> and created a map
+			</li>
+			<li> Created a GitHub repository and page</li>
+			<li> Embedded the map into HTML file within GitHub repository</li>
+			<li> Cleaned-up GitHub page</li>
+		</ol>
+
+		<h3> Here's our code: </h3>
+		<p> Here's a sample of the code we used to scrape Twitter based on <a
+				href='https://github.com/pmiguelcruz/twitter_recent_search_v2_standard/blob/main/twitter_recent_search_v2_standard.js'>Professor
+				Pedro Cruz's code</a>. </p>
+
+		<prettyify linenums=1>
+			<pre class="prettyprint">
 	<code>
 const needle = require('needle');  // requires library to make HTTP requests
 const fs = require('fs');  // requires library to save files
@@ -181,173 +219,151 @@ function sleep(ms) {
 	}
 	</code>
 	</pre>
-</div>
-
-	<div id=chart class='tab'>
-		<h3> Chart </h3>
-		<h3></h3>
-		<img src="Wildlife_Stacked_Bar_Chart_v2.svg" width="500" alt="Wildlife Stacked Bar Chart"/>
-		<h3></h3>
 	</div>
 
-	<!-- start display map -->
-	<div id='map' class='tab'>
 
-	<!-- display tweet deets -->
-	<div class='tweetBox'>
-		<div><h3 style="color:maroon; font-family:'Playfair Display';">Tweet:</style> <span id='tweet'></span></div>
-		<br>
-		<div><h3 style="color:maroon; font-family:'Playfair Display';">Date:</style> <span id='date'></span></div>
-		<div> <span> <img  id = 'tweet_media' src = ''> </img> </div>
-	</div>
-	
-	<!-- display filter menu -->
-	<div id='menu' --> </div>
-
-	<!-- end display map -->
-	</div>
-	
 	<!--build map with Mapbox GL JS script -->
 	<script>
 		mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
 		var map = new mapboxgl.Map({
-		container: 'map', // container id
-		style: 'mapbox://styles/anna-nirvana/ckmnzli9f7g1517qlg3wunr12', // custom style url from https://studio.mapbox.com/
-		center: [5, 15], // starting position
-		zoom: .8, // starting zoom
-		layout: {
-		// make layer visible by default
-		'visibility': 'visible',
-		}
+			container: 'map', // container id
+			style: 'mapbox://styles/anna-nirvana/ckmnzli9f7g1517qlg3wunr12', // custom style url from https://studio.mapbox.com/
+			center: [5, 15], // starting position
+			zoom: .8, // starting zoom
+			layout: {
+				// make layer visible by default
+				'visibility': 'visible',
+			}
 		});
 
 		// FILTER BY LANGUAGE LAYER
 		//enumerate ids of the layers
-		var toggleableLayerIds = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
+		var toggleableLayerIds = ['Arabic', 'English', 'French', 'Indonesian', 'Portuguese', 'Spanish', 'Thai'];
 
 		// set up the corresponding toggle button for each layer
 		for (var i = 0; i < toggleableLayerIds.length; i++) {
-		var id = toggleableLayerIds[i];
+			var id = toggleableLayerIds[i];
 
-		var link = document.createElement('a');
-		link.href = '#';
-		link.className = 'active';
-		link.textContent = id;
+			var link = document.createElement('a');
+			link.href = '#';
+			link.className = 'active';
+			link.textContent = id;
 
-		link.onclick = function (e) {
-		var clickedLayer = this.textContent;
-		e.preventDefault();
-		e.stopPropagation();
+			link.onclick = function (e) {
+				var clickedLayer = this.textContent;
+				e.preventDefault();
+				e.stopPropagation();
 
-		var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+				var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
 
-		//toggle layer visibility by changing the layout object's visibility property
-		if (visibility === 'visible') {
-			map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-			this.className = '';
-		} else {
-			this.className = 'active';
-			map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-			}
-		};
-
-		var layers = document.getElementById('menu');
-		layers.appendChild(link);
-		}
-	</script>
-
-<!-- display tweet text and created_at date in the "tweet box" -->
-<script>
-var tweetDisplay = document.getElementById('tweet');
-var dateDisplay = document.getElementById('date');
-var mediaDisplay = document.getElementById('tweet_media');
-var tweetID = null;
-var allLang = ['Arabic','English','French','Indonesian','Portuguese','Spanish','Thai'];
-
-// allLang.eachLayer(function (layer) {
-
-let hover = function(lang) {
-
-	map.on('mousemove', lang, (l) => {
-
-		map.getCanvas().style.cursor = 'pointer';
-		// set variables equal to the current tweet's text and date
-		var tweetText = (l.features[0].properties.text);
-		var tweetDate = (l.features[0].properties.created_at);
-		var tweetMediaURL = 'https://pbs.twimg.com/media/ExllNcRW8AQehPV.jpg';
-		// var tweetMediaURL = (l.features[0].properties.media_url);
-		// check if undefined...
-
-		console.log(l.features);
-
-		// check whether features exist
-		if (l.features.length > 0) {
-			// display the text, date, and relevant media in the tweet box
-			tweetDisplay.textContent = tweetText;
-			dateDisplay.textContent = tweetDate;
-			mediaDisplay.src = tweetMediaURL;
-
-			// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
-			if (tweetID) {
-			map.removeFeatureState({
-				source: lang,
-				id: id,
-			});
+				//toggle layer visibility by changing the layout object's visibility property
+				if (visibility === 'visible') {
+					map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+					this.className = '';
+				} else {
+					this.className = 'active';
+					map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+				}
 			};
 
-			tweetID = l.features[0].id;
-
-			// when the mouse moves over the layer, update the feature state for the feature under the mouse
-			map.setFeatureState({
-			source: lang,
-			id: tweetID,
-			}, 
-			{ hover: true }
-			);
-		}
-		});
-
-	map.on('mouseleave', lang, function() {
-		if (tweetID) {
-		map.setFeatureState({
-			source: lang,
-			id: tweetID,
-			},
-			{ hover: false });
-		};
-
-		tweetID = null;
-
-		// remove the information from the previously hovered feature from the tweet box
-		tweetDisplay.textContent = '';
-		dateDisplay.textContent = '';
-
-		// reset the cursor style back to map pan hand
-		map.getCanvas().style.cursor = '';
-		});
-
-	};
-
-	allLang.forEach(function(lang) {
-		hover(lang);
-
-	});
-
-</script>
-
-<!-- Tab navigation functionality for the map, chart, and process documentation -->
-<script>
-	function openTab(tabName) {
-		var i;
-		var x = document.getElementsByClassName('tab');
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-		document.getElementById(tabName).style.display = "block";
+			var layers = document.getElementById('menu');
+			layers.appendChild(link);
 		}
 	</script>
 
+	<!-- display tweet text and created_at date in the "tweet box" -->
+	<script>
+		var tweetDisplay = document.getElementById('tweet');
+		var dateDisplay = document.getElementById('date');
+		var mediaDisplay = document.getElementById('tweet_media');
+		var tweetID = null;
+		var allLang = ['Arabic', 'English', 'French', 'Indonesian', 'Portuguese', 'Spanish', 'Thai'];
+
+		// allLang.eachLayer(function (layer) {
+
+		let hover = function (lang) {
+
+			map.on('mousemove', lang, (l) => {
+
+				map.getCanvas().style.cursor = 'pointer';
+				// set variables equal to the current tweet's text and date
+				var tweetText = (l.features[0].properties.text);
+				var tweetDate = (l.features[0].properties.created_at);
+				var tweetMediaURL = 'https://cdn.shopify.com/s/files/1/2414/0063/products/1-19907_bunch-of-balloons-transparent.jpg?v=1599460344';
+				// var tweetMediaURL = (l.features[0].properties.media_url);
+				// check if undefined...
+
+				console.log(l.features);
+
+				// check whether features exist
+				if (l.features.length > 0) {
+					// display the text, date, and relevant media in the tweet box
+					tweetDisplay.textContent = tweetText;
+					dateDisplay.textContent = tweetDate;
+					mediaDisplay.src = tweetMediaURL;
+
+					// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
+					if (tweetID) {
+						map.removeFeatureState({
+							source: lang,
+							id: id,
+						});
+					};
+
+					tweetID = l.features[0].id;
+
+					// when the mouse moves over the layer, update the feature state for the feature under the mouse
+					map.setFeatureState({
+						source: lang,
+						id: tweetID,
+					},
+						{ hover: true }
+					);
+				}
+			});
+
+			map.on('mouseleave', lang, function () {
+				if (tweetID) {
+					map.setFeatureState({
+						source: lang,
+						id: tweetID,
+					},
+						{ hover: false });
+				};
+
+				tweetID = null;
+
+				// remove the information from the previously hovered feature from the tweet box
+				tweetDisplay.textContent = '';
+				dateDisplay.textContent = '';
+				mediaDisplay.src = '';
+
+				// reset the cursor style back to map pan hand
+				map.getCanvas().style.cursor = '';
+			});
+
+		};
+
+		allLang.forEach(function (lang) {
+			hover(lang);
+
+		});
+
+	</script>
+
+	<!-- Tab navigation functionality for the map, chart, and process documentation -->
+	<script>
+		function openTab(tabName) {
+			var i;
+			var x = document.getElementsByClassName('tab');
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			document.getElementById(tabName).style.display = "inline-block";
+		}
+	</script>
 	</div>
 
 </body>
+
 </html>

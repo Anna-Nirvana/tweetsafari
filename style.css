@@ -9,17 +9,18 @@ body, html {
 }
 
 a {
-    color:rgb(29, 91, 185);
+    color: rgb(29, 91, 185);
 }
+
 #map {
     position: fixed;
     top: 0;
     bottom: 0;
     width: 100%;
-    height:100vh;
+    height: 100vh;
     z-index: -3;
     /* margin-left: 25%; */
-    }
+}
 
 #Smokey {
     width: 15vw;
@@ -42,7 +43,7 @@ a {
     position: absolute;
     margin-top: 0px;
     margin-bottom: 50px;
-    padding-top:0;
+    padding-top: 0;
 }
 
 .tabBar {
@@ -52,9 +53,9 @@ a {
     /* margin: 0; */
     position: relative;
     /* z-index: 3; */
-    font-family:'Playfair Display', sans-serif;
+    font-family: 'Playfair Display', sans-serif;
     padding: 2px;
-    border-radius:2%;
+    border-radius: 2%;
     /* position: absolute; */
     opacity: 80%;
     /* margin-top:0vh; */
@@ -77,7 +78,7 @@ li, p {
 
 .tabButton, .button {
     font-family: 'Playfair Display', 'open sans';
-    size:0vmax;
+    size: 0vmax;
     position: relative;
     background-color: black;
     color: whitesmoke;
@@ -109,15 +110,60 @@ li, p {
 } */
 
 h1 {
-font-family: 'Playfair Display', sans-serif;
-font-size: 30pt;
-font-weight:lighter;
-kerning:3mm;
-color: #E6EBD8;
-text-align: left;
-text-decoration:rgba(0, 0, 0, 0.25);
-text-decoration-style: dotted;
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 30pt;
+    font-weight: lighter;
+    kerning: 3mm;
+    color: #E6EBD8;
+    text-align: left;
+    text-decoration: rgba(0, 0, 0, 0.25);
+    text-decoration-style: dotted;
 }
+
+/* styling for the tweet box */
+
+.tweetBox {
+    position: absolute;
+    /* display: inline-block; */
+    font-family: 'Arial', 'sans serif';
+    margin-bottom: 0;
+    margin-top: 75vh;
+    margin-left: 30%;
+    width: 65vw;
+    padding: 5px;
+    align-items: center;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #000000;
+    background-color: #f2f1eb;
+    border-radius: 3px;
+    z-index: 1;
+    opacity: 80%;
+}
+
+.tweetBox {
+    display: flex;
+}
+
+.box-content {
+    flex: 50%;
+}
+
+#tweet, #date {
+    font-family: 'Arial', 'sans serif';
+    font-weight: lighter;
+    color: black;
+    font-style: normal;
+    /* margin: -3px; */
+}
+
+#tweet_media {
+    height: 100px;
+    float: right;
+    margin: 20px;
+    /* display: flex; */
+}
+
 /* 
 h2 {
     text-align: left;
@@ -193,35 +239,8 @@ pre code {
     /* z-index: -1; */
 }
 
-
-/* styling for the tweet box */
-.tweetBox {
-    position: absolute;
-    font-family: 'Arial','sans serif';
-    margin-bottom: 0;
-    margin-top:10vh;
-    margin-left: 40%;
-    padding: 5px;
-    width: 45%;
-    align-items: center;
-    border-radius: 3px;
-    font-size: 14px;
-    color: #000000;
-    background-color:#f2f1eb;
-    border-radius: 3px;
-    z-index: 1;
-    opacity: 80%;
-}
-
-#tweet, #date {
-    font-family: 'Arial', 'sans serif';
-    font-weight: lighter;
-    color: black;
-    font-style: normal;
-    margin: -3px;
-}
-
 /* styling for the interactive menu */
+
 #menu {
     background: #b9b6bd;
     opacity: 80%;
@@ -233,7 +252,7 @@ pre code {
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Playfair Display', sans-serif;
-    color:Black;
+    color: Black;
 }
 
 #menu a {
@@ -254,11 +273,11 @@ pre code {
 
 #menu a:hover {
     background-color: white;
-    color:#000000;
+    color: #000000;
 }
 
 #menu a.active {
-    background-color:  #e6ebd8;
+    background-color: #e6ebd8;
     color: #000000;
 }
 
