@@ -36,7 +36,7 @@ a {
     background: #000000;
     background-blend-mode: overlay;
     padding: 15px;
-    text-align: justify;
+    text-align: left;
     z-index: 2;
     opacity: 80%;
     position: absolute;
