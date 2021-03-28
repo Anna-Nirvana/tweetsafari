@@ -2,7 +2,7 @@
 
 body, html {
     font-family: 'Arial', sans-serif;
-    /* display: block; */
+    display: block;
     padding: 0;
     margin: 0;
     /* background-color: #3887be; */
@@ -163,12 +163,13 @@ pre.prettyprint {
 pre code {
     background-color: #eee;
     border: 1px solid #999;
-    /* display: block; */
+    display: block;
     padding: 10px;
     border-radius: 8px;
     width: 95%;
     margin: 1em;
     white-space: pre-wrap;
+    font-weight: lighter;
 }
 
 #chart {
