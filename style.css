@@ -219,6 +219,12 @@ pre code {
     color: black;
 }
 
+#autoresizing {
+    display: block;
+    overflow: hidden;
+    resize: none;
+}
+
 /* styling for the interactive menu */
 #menu {
     background: #b9b6bd;
