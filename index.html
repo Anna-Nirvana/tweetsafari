@@ -226,7 +226,7 @@ function sleep(ms) {
 		mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
-			style: 'mapbox://styles/anna-nirvana/ckmnzli9f7g1517qlg3wunr12', // custom style url from https://studio.mapbox.com/
+			style: 'mapbox://styles/anna-nirvana/ckmtm4z4c45gf18pg08luga6b', // custom style url from https://studio.mapbox.com/
 			center: [5, 15], // starting position
 			zoom: .8, // starting zoom
 			layout: {
@@ -288,9 +288,8 @@ function sleep(ms) {
 				// set variables equal to the current tweet's text and date
 				var tweetText = (l.features[0].properties.text);
 				var tweetDate = (l.features[0].properties.created_at);
-				var tweetMediaURL = 'https://cdn.shopify.com/s/files/1/2414/0063/products/1-19907_bunch-of-balloons-transparent.jpg?v=1599460344';
-				// var tweetMediaURL = (l.features[0].properties.media_url);
-				// check if undefined...
+				var tweetMediaURL = (l.features[0].properties.media_url);
+				// check if undefined...?
 
 				console.log(l.features);
 
