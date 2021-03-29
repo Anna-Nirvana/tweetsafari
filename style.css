@@ -1,11 +1,8 @@
-/* Here's a test stylesheet. */
-
 body, html {
     font-family: 'Arial', sans-serif;
     display: block;
     padding: 0;
     margin: 0;
-    /* background-color: #3887be; */
 }
 
 a {
@@ -19,7 +16,6 @@ a {
     width: 100%;
     height: 100vh;
     z-index: -3;
-    /* margin-left: 25%; */
 }
 
 #Smokey {
@@ -33,12 +29,12 @@ a {
 
 .sidebar {
     width: 25%;
-    height: inherit;
+    height: 100vh;
+    z-index: 3;
     background: #000000;
     background-blend-mode: overlay;
     padding: 15px;
     text-align: left;
-    z-index: 2;
     opacity: 80%;
     position: absolute;
     margin-top: 0px;
@@ -47,30 +43,14 @@ a {
 }
 
 .tabBar {
-    /* width: 23%; */
     height: 50px;
-    /* align-items: center; */
-    /* margin: 0; */
     position: relative;
-    /* z-index: 3; */
     font-family: 'Playfair Display', sans-serif;
     padding: 2px;
     border-radius: 2%;
-    /* position: absolute; */
     opacity: 80%;
-    /* margin-top:0vh; */
-    /* margin-bottom: 20%; */
     margin-left: 5px;
 }
-
-/*
-li {
-    font-weight: lighter;
-    background-color: #394053;
-    background-blend-mode: color-burn;
-    border-radius: 2px;
-}
-*/
 
 li, p {
     font-weight: lighter;
@@ -88,8 +68,13 @@ li, p {
     margin-left: 2px;
     padding: 5px;
     align-items: center;
-    /* z-index: 3; */
     margin-left: 0;
+}
+
+.tabButton:hover {
+    cursor: pointer;
+    color: wheat;
+    background-color: #394053;
 }
 
 .text {
@@ -103,12 +88,6 @@ li, p {
     font-family: 'Arial', 'opens sans';
 }
 
-/* .text {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #F1E7CC;
-} */
-
 h1 {
     font-family: 'Playfair Display', sans-serif;
     font-size: 30pt;
@@ -121,10 +100,8 @@ h1 {
 }
 
 /* styling for the tweet box */
-
 .tweetBox {
     position: absolute;
-    /* display: inline-block; */
     font-family: 'Arial', 'sans serif';
     margin-bottom: 5vh;
     margin-top: 65vh;
@@ -159,69 +136,20 @@ h1 {
     color: black;
     font-style: normal;
     float: top;
-    /* margin: -3px; */
 }
 
 #tweet_media {
     height: 200px;
     float: right;
     margin: 5px;
-    /* display: flex; */
 }
-
-/* 
-h2 {
-    text-align: left;
-    font-size: 14pt;
-    font-style: italic;
-    color: white;
-    font-family: 'Montserrat', 'open sans';
-} */
 
 #process {
     padding: 20px;
     margin-left: 30%;
     display: none;
     display: flexbox;
-    /* z-index: -2; */
 }
-
-/* code {
-    font-family: courier;
-    text-indent: 50px;
-    background-color: '#98bfb5';
-}
-
-pre code {
-    background-color: #000;
-    border: 1px solid #999;
-    display: block;
-    padding: 20px;
-} 
-
-pre.prettyprint, code.prettyprint {
-	background-color: #000;
-	border-radius: 8px;
-}
-
-pre.prettyprint {
-	width: 95%;
-	margin: 1em auto;
-	padding: 1em;
-	white-space: pre-wrap;
-}
-
-pre code {
-    background-color: #eee;
-    border: 1px solid #999;
-    display: block;
-    padding: 10px;
-    border-radius: 8px;
-    width: 95%;
-    margin: 1em;
-    white-space: pre-wrap;
-    font-weight: lighter;
-} */
 
 pre code {
     background-color: #eee;
@@ -241,11 +169,9 @@ pre code {
     align-items: left;
     margin-left: 30%;
     display: none;
-    /* z-index: -1; */
 }
 
-/* styling for the interactive menu */
-
+/* styling for the language menu */
 #menu {
     background: #b9b6bd;
     opacity: 80%;
