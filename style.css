@@ -126,8 +126,8 @@ h1 {
     position: absolute;
     /* display: inline-block; */
     font-family: 'Arial', 'sans serif';
-    margin-bottom: 0;
-    margin-top: 75vh;
+    margin-bottom: 5vh;
+    margin-top: 65vh;
     margin-left: 30%;
     width: 65vw;
     padding: 5px;
@@ -145,8 +145,12 @@ h1 {
     display: flex;
 }
 
+#leftTBcolumn {
+    width: 70%;
+}
+
 .box-content {
-    flex: 50%;
+    flex: 70%;
 }
 
 #tweet, #date {
@@ -154,13 +158,14 @@ h1 {
     font-weight: lighter;
     color: black;
     font-style: normal;
+    float: top;
     /* margin: -3px; */
 }
 
 #tweet_media {
-    height: 100px;
+    height: 200px;
     float: right;
-    margin: 20px;
+    margin: 5px;
     /* display: flex; */
 }
 

@@ -237,7 +237,7 @@ function sleep(ms) {
 
 		// FILTER BY LANGUAGE LAYER
 		//enumerate ids of the layers
-		var toggleableLayerIds = ['Arabic', 'English', 'French', 'Indonesian', 'Portuguese', 'Spanish', 'Thai'];
+		var toggleableLayerIds = ['Arabic', 'English', 'French', 'Portuguese', 'Spanish', 'Thai'];
 
 		// set up the corresponding toggle button for each layer
 		for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -270,13 +270,13 @@ function sleep(ms) {
 		}
 	</script>
 
-	<!-- display tweet text and created_at date in the "tweet box" -->
+	<!-- display tweet text and formatted date in the "tweet box" -->
 	<script>
 		var tweetDisplay = document.getElementById('tweet');
 		var dateDisplay = document.getElementById('date');
 		var mediaDisplay = document.getElementById('tweet_media');
 		var tweetID = null;
-		var allLang = ['Arabic', 'English', 'French', 'Indonesian', 'Portuguese', 'Spanish', 'Thai'];
+		var allLang = ['Arabic', 'English', 'French', 'Portuguese', 'Spanish', 'Thai'];
 
 		// allLang.eachLayer(function (layer) {
 
@@ -287,7 +287,7 @@ function sleep(ms) {
 				map.getCanvas().style.cursor = 'pointer';
 				// set variables equal to the current tweet's text and date
 				var tweetText = (l.features[0].properties.text);
-				var tweetDate = (l.features[0].properties.created_at);
+				var tweetDate = (l.features[0].properties.date);
 				var tweetMediaURL = (l.features[0].properties.media_url);
 				// check if undefined...?
 
