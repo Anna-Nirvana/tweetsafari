@@ -138,6 +138,7 @@ h1 {
     height: 200px;
     float: right;
     margin: 5px;
+    max-width: 400px;
 }
 
 #process {
