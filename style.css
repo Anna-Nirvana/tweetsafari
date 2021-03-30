@@ -2,6 +2,7 @@ body, html {
     font-family: 'Arial', sans-serif;
     display: block;
     padding: 0;
+    margin: 0;
 }
 
 a {
