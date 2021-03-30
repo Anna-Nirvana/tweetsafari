@@ -2,7 +2,6 @@ body, html {
     font-family: 'Arial', sans-serif;
     display: block;
     padding: 0;
-    margin: 0;
 }
 
 a {
@@ -29,7 +28,7 @@ a {
 
 .sidebar {
     width: 25%;
-    height: 100vh;
+    height:fit-content;
     z-index: 3;
     background: #000000;
     background-blend-mode: overlay;
@@ -38,7 +37,7 @@ a {
     opacity: 80%;
     position: absolute;
     margin-top: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     padding-top: 0;
 }
 
@@ -53,7 +52,7 @@ a {
 }
 
 .scroll {
-    width: 65vw;
+    width: 60vw;
     height: 50vh;
     overflow: auto;
 }
@@ -92,6 +91,7 @@ li, p {
     color: #F2F1EB;
     size: smaller;
     font-family: 'Arial', 'opens sans';
+    position: relative;
 }
 
 h1 {
@@ -162,6 +162,12 @@ pre code {
     margin: 1em;
     white-space: pre-wrap;
     font-weight: lighter;
+}
+
+.prettyprint {
+    background-color: #a1bec9;
+    margin: 10px;
+    border-radius: 30px;
 }
 
 #chart {
