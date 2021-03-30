@@ -30,7 +30,7 @@ a {
 
 .sidebar {
     width: 25%;
-    height:fit-content;
+    height: max-content;
     z-index: 3;
     background: #000000;
     background-blend-mode: overlay;
@@ -55,7 +55,7 @@ a {
 
 .scroll {
     width: 60vw;
-    height: 50vh;
+    height: 40vh;
     overflow: auto;
     padding: 10px;
 }
