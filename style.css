@@ -52,6 +52,12 @@ a {
     margin-left: 5px;
 }
 
+.scroll {
+    width: 65vw;
+    height: 50vh;
+    overflow: auto;
+}
+
 li, p {
     font-weight: lighter;
 }
