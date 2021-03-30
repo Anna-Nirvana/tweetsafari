@@ -30,7 +30,7 @@ a {
 
 .sidebar {
     width: 25%;
-    height: max-content;
+    height: 100%;
     z-index: 3;
     background: #000000;
     background-blend-mode: overlay;
