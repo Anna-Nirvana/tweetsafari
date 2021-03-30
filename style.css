@@ -185,12 +185,11 @@ pre code {
     margin-left: 30%;
     display: none;
 }
-*/
 
 * {
   box-sizing: border-box;
 }
-
+*/
 
 #chart {
     position: absolute;
@@ -199,6 +198,7 @@ pre code {
     align-items: left;
     margin-left: 30%;
     display: none;
+    box-sizing: border-box;
 }
 
 .column {
