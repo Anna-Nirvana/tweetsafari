@@ -196,6 +196,18 @@ pre code {
     display: none;
 }
 
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 /* styling for the language menu */
 #menu {
     background: #b9b6bd;
