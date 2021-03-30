@@ -126,10 +126,6 @@ h1 {
     width: 70%;
 }
 
-.box-content {
-    flex: 70%;
-}
-
 #tweet, #date {
     font-family: 'Arial', 'sans serif';
     font-weight: lighter;
