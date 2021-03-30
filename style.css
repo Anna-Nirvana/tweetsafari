@@ -190,8 +190,9 @@ pre code {
 #chart {
     position: absolute;
     border-radius: 4px;
+    padding: 5px;
     align-items: left;
-    margin-left: 50%;
+    margin-left: 30%;
     display: none;
 }
 
