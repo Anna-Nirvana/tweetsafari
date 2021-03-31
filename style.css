@@ -28,7 +28,6 @@ a {
     margin-left: 5vw;
 }
 
-/*
 .sidebar {
     width: 25%;
     height: 100%;
@@ -42,18 +41,6 @@ a {
     margin-top: 0px;
     margin-bottom: 0px;
     padding-top: 0;
-}
-*/
-
-.sidebar {
-    width: 25%;
-    z-index: 3;
-    background: #000000;
-    background-blend-mode: overlay;
-    padding: 15px;
-    text-align: left;
-    opacity: 80%;
-    position: absolute;
 }
 
 .tabBar {
