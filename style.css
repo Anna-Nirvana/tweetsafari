@@ -6,13 +6,8 @@ body, html {
     background-color: #F2F1EB;
 }
 
-/*a {
-    color: rgb(29, 91, 185);
-}
-*/
-
 a {
-    color: #E6EBD8;
+    color: #2C505C;
 }
 
 #map {
@@ -123,7 +118,7 @@ h1 {
 /* styling for the tweet box */
 .tweetBox {
     position: absolute;
-    font-family: 'Arial', 'sans serif';
+    font-family: 'Playfair Display', sans-serif;
     margin-bottom: 5vh;
     margin-top: 30vh;
     margin-left: 30%;
@@ -207,6 +202,7 @@ pre code {
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Playfair Display', sans-serif;
+    font: italic bold;
     color: Black;
 }
 
