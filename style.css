@@ -126,7 +126,7 @@ h3 {
 
 /* styling for the tweet box */
 .tweetBox {
-    text-indent: 50px;
+/*     text-indent: 50px; */
     position: absolute;
     font-family: 'Playfair Display', sans-serif;
     margin-bottom: 5vh;
