@@ -65,16 +65,16 @@ li, p {
 }
 
 .tabButton {
-    font-family: 'Playfair Display', 'open sans';
+    font-family: 'Open Sans', 'Playfair Display';
     size: 0vmax;
     border:none;
     outline:none;
     position: relative;
     background-color: black;
-    color: whitesmoke;
+    color: white;
     fill: black;
     font-style: bold;
-    opacity: 0.9;
+    opacity: 1;
     border-radius: 2px;
     margin-left: 2px;
     padding: 5px;
