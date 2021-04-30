@@ -71,7 +71,7 @@ li, p {
     border:none;
     position: relative;
     background-color: black;
-    color: whitesmoke;
+/*     color: whitesmoke; */
     font-style: bold;
     opacity: 90;
     border-radius: 2px;
