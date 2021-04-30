@@ -202,8 +202,10 @@ pre code {
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Playfair Display', sans-serif;
-    font: italic bold;
     color: Black;
+    text-transform:capitalize;
+    font-variant:small-caps;
+    font-weight:bold italic;
 }
 
 #menu a {
