@@ -97,7 +97,8 @@ li, p {
     color: #F2F1EB;
     size: smaller;
     font-family: 'Playfair Display', sans-serif;
-    position: sticky;
+    position: relative;
+    margin-top: 100px;
 }
 
 h1 {
