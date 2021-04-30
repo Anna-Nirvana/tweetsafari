@@ -24,367 +24,366 @@
 
 </head>
 
-<body>
-
-	<div class='sidebar'>
-		<h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
-		<!-- <h2> mapping animal encounters </h2> -->
-		<div class='tabBar'>
-			<div class='tabButton' width = 40px height = 40px onclick="openTab('map')">Map</div>
-			<div class='tabButton' width = 40px height = 40px onclick="openTab('chart')">Charts</div>
-			<div class='tabButton' width = 40px height = 40px onclick="openTab('process')">Process & Code</div>
-			<br>
-		</div>
-		<div id="intro" class="text">
-			Wildlife is all around us. Sometimes we take notice and share them on <a
-				href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife"
-			in six different languages listed below between March 21, 2021 and March 28, 2021.
-			<ol>
-				<li> <b> Arabic: </b> الحيواناتالبرية</li>
-				<li> <b> English: </b> wildlife </li>
-				<li> <b> French: </b> faune </li>
-				<li> <b> Portuguese: </b> animais selvagens </li>
-				<li> <b> Spanish: </b> fauna silvestre </li>
-				<li> <b> Thai: <b> สัตว์ป่า </li>
-			</ol>
-			<div id="footer">
-				Created and designed by Anna Campbell and Roseanna Yip for ARTG 6100 Information Design Studio 2: Dynamic Mapping and Models, Spring 2021, IDDV Program, Northeastern University.
-			</div>
-		</div>
-	</div>
-
-	<!-- start display map -->
-	<div id='map' class='tab'>
-
-		<!-- display tweet deets -->
-		<div class='tweetBox'>
-			<div id='leftTBcolumn' class='box-content'>
-				<div>
-					<h3 style="color:#2C505C; font-family:'Playfair Display';">Tweet:  </style> <span id='tweet'></span>
-				</div>
-				<!-- <br> -->
-				<div>
-					<h3 style="color:#2C505C; font-family:'Playfair Display';">Date:  </style> <span id='date'></span>
-				</div>
-			</div>
-			<div id='rtTBcolumn' class='box-content'>
-				<div> <span> <img id='tweet_media' src=''> </img> </div>
-			</div>
-		</div>
-
-		<!-- display filter menu -->
-		<div id='menu' --> </div>
-
-		<!-- end display map -->
-	</div>
-
-
-	<div id=chart class='tab'>
-		<h3> Charts </h3>
-		<p>The below charts shows the number of tweets per continent from March 21st to march 28th. There is a significant increase of wildlife tweets between March 26th and March 28th, which falls on Friday and the weekend.</p>
-		<img src="Wildlife_Stacked_Bar_Chart_v6.svg" width="800" alt="Wildlife Stacked Bar Chart">
-	</div>
-
-	<div id='process' class='tab'>
-		<h3> To complete this project, we: </h3>
-		<ol>
-			<li> Collected data (tweets from the past 7 days containing the word 'wildlife') using Twitter's API (recent search endpoint) using the code below</li>
-			<li> Repeated the process for our keyword in six different languages </li>
-			<li> Converted the data from its output JSON file to an EXCEL file for formatting</li>
-			<li> Converted the formatted EXCEL file to a CSV file for upload</li>
-			<li> Uploaded the CSV file to <a href='https://www.mapbox.com/mapbox-studio'>Mapbox Studio</a> and created a map style
-			</li>
-			<li> Created a GitHub repository and page to host our content</li>
-			<li> Embedded the map into the HTML index file within our repository</li>
-			<li> Create a stacked bar chart using RStudio and Adobe Illustrator and added it to the HTML file</li>
-			<li> Added CSS rules for styling and cleaned up the HTML file</li>
-		</ol>
-
-		<h3> Here's our code: </h3>
-		<p> Here's a sample of the code we used to scrape Twitter based on <a
-				href='https://github.com/pmiguelcruz/twitter_recent_search_v2_standard/blob/main/twitter_recent_search_v2_standard.js'>Professor
-				Pedro Cruz's code</a>. </p>
-
-		<prettyify linenums=1>
-			<pre class="prettyprint">
-	<code class = 'scroll'>
-const needle = require('needle');  // requires library to make HTTP requests
-const fs = require('fs');  // requires library to save files
-const token = "YOUR_BEARER_TOKEN";  // this is your bearer token
-
-const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";  // End-point for recent search
-//const endpointUrl = "https://api.twitter.com/2/tweets/search/all";  // This would be the end-point for the full historical search, only available for academic licenses
-
-
-/** This function simply puts a request given a certain 'query'
-*  and a batch of paginated results indicated in 'nextToken' */
-
-async function getRequest(query, nextToken) {
-
-// builds a query object to send
-function buildQuery() {
-let q = {
-	"query": query,  // the query
-	"max_results": 100,  // 100 is the max results per requests for standard licenses in sandboxed environments
-	"expansions": "geo.place_id,attachments.media_keys",  // whenever a tweet has geographical information in the form a of place_id, get more info on that place_id, and grab media
-	"tweet.fields": "author_id,created_at,geo",  // by default the Tweet id and and the text are returned, but here we're also including the author_id, the time of publishing, and its geographical features
-	"place.fields": "geo,name,full_name,place_type";  // the additional information associated with a place_id, namely its name and a geo object with geographical coordinates, either in the form of a point or a bounding box
-	"media.fields": "preview_image_url,url" // grab media URLs
-};
-// the nextToken paramenter is optional (as there is none in the first request)
-// but if a nextToken was passed, then it inserts it into the query object
-if (nextToken !== undefined) q["next_token"] = nextToken;
-return q;
-}
-
-const response = await needle('get', endpointUrl, buildQuery(), {
-headers: {
-	"User-Agent": "v2RecentSearchJS",  // Can be whatever you want
-	"authorization": "Bearer " + token  // Attaches your Bearer token to the header of the request
-}
-})
-return response.body; // Returns the contents of the response
-}
-
-
-/** async funtions enable us to stop the program to wait on requests
-*  this function is the core of the program and where execution starts */
-
-(async function () {
-
-/** an anonymous function that gets a whole batch of tweet reponses
-*  and only adds the ones with geo information to 'array' */
-function filterTweets(array, batch) {
-batch.data.forEach(tweet => {
-	if (tweet["geo"] !== undefined) {
-		/* expands place_id */
-		if (tweet.geo["place_id"] !== undefined) {
-			/* associates the place_id with the expanded information on place_ids in the response */
-			let expanded_geo = batch.includes.places.find(place => {
-				return place.id == tweet.geo.place_id;
-			});
-			// adds new variable to tweet object called 'place_info'
-			tweet.place_info = expanded_geo;
-		}
-		if (tweet['place_info']['geo']['bbox'] == !undefined) {
-			//average of the bbox
-			/*
-			bbox[0] -> x of bottom left corner
-			bbox[1] -> y of bottom left corner
-			bbox[2] -> x of top right corner
-			bbox[3] -> y of top right corner
-			*/
-
-			let xa = (tweet.place_info.geo.bbox[0] + tweet.place_info.geo.bbox[2]) / 2
-			let ya = (tweet.place_info.geo.bbox[1] + tweet.place_info.geo.bbox[3]) / 2
-
-			tweet.place_info.geo.center = [xa, ya];
-		}
-
-
-		if (tweet.attachments !== undefined) {
-			// if (tweet.attachments['media_keys'] !== undefined) {
-			let mediaKey = tweet.attachments.media_keys[0];
-			/* associates the media_keys with the expanded information in the response */
-			let relevantMedia = batch.includes.media.find(mediaEntry => {
-				return mediaEntry.media_key == mediaKey
-			});
-
-			// adds new variable to tweet object called 'media_url'
-			if (relevantMedia.type == 'photo') {
-				tweet.media_url = relevantMedia.url;
-			}
-			else if (relevantMedia.type == 'video') {
-				tweet.media_url = relevantMedia.preview_image_url;
-			}
-		}
-
-		array.push(tweet);
-	}
-});
-
-}
-
-let filteredTweets = []; //array to keep all collected tweets
-
-const query = "wildlife -is:retweet"; // we are searching for the word 'wildlife' but only in tweets that are *not* retweets since retweets never have geo information
-let response = await getRequest(query);  // finally, put the request and wait for the response
-//console.log(response);  // DEBUG
-const nGeoTweets = 500;  // after how many collected tweets with geo info are stopping execution (in this example: 500)
-while (response.meta["next_token"] !== undefined) {
-response = await getRequest(query, response.meta.next_token);
-filterTweets(filteredTweets, response);
-console.log(filteredTweets.length); // DEBUG
-await sleep(2100);  /*  sleeps the program for 2.1seconds : 
-			the standard rate limit is 450 requests per 15 min time period.
-			If you make more than 450 requests in less than 15 mins, the API
-			will block further requests until the 15 mins period is over;
-			Since the percentage of tweets with geo information is low you will 
-			need to place more than 450 requets (remember that each requests returns 100 tweets)
-			In order to stay under the rate limit and leave the program executing in the
-			background collecting tweets, only one request every 2 seconds should be placed */
-
-//  if we have enough tweets, stops collecting                        
-if (filteredTweets.length >= nGeoTweets) break;
-
-}
-
-console.log("TWEETS WITH GEO: " + filteredTweets.length); // DEBUG
-console.log(filteredTweets); // DEBUG
-fs.writeFileSync("English.json", JSON.stringify(filteredTweets)); // Save the results to a file in the disk
-process.exit(); // terminates the program
-})();
-
-/** Utility function that sleeps the program for 'ms' milliseconds */
-function sleep(ms) {
-return new Promise(resolve => setTimeout(resolve, ms));
-}
-	</code>
-	</pre>
-	</div>
-
-
-	<!--build map with Mapbox GL JS script -->
-	<script>
-		mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
-		var map = new mapboxgl.Map({
-			container: 'map', // container id
-			style: 'mapbox://styles/anna-nirvana/ckmtm4z4c45gf18pg08luga6b', // custom style url from https://studio.mapbox.com/
-			center: [-50, 50], // starting position
-			zoom: .8, // starting zoom
-			layout: {
-				// make layer visible by default
-				'visibility': 'visible',
-			}
-		});
-
-		// FILTER BY LANGUAGE LAYER
-		//enumerate ids of the layers
-		var toggleableLayerIds = ['ARABIC', 'ENGLISH', 'FRENCH', 'PORTUGUESE', 'SPANISH', 'THAI'];
-
-		// set up the corresponding toggle button for each layer
-		for (var i = 0; i < toggleableLayerIds.length; i++) {
-			var id = toggleableLayerIds[i];
-
-			var link = document.createElement('a');
-			link.href = '#';
-			link.className = 'active';
-			link.textContent = id;
-
-			link.onclick = function (e) {
-				var clickedLayer = this.textContent;
-				e.preventDefault();
-				e.stopPropagation();
-
-				var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-				//toggle layer visibility by changing the layout object's visibility property
-				if (visibility === 'visible') {
-					map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-					this.className = '';
-				} else {
-					this.className = 'active';
-					map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-				}
-			};
-
-			var layers = document.getElementById('menu');
-			layers.appendChild(link);
-		}
-	</script>
-
-	<!-- display tweet text and formatted date in the "tweet box" -->
-	<script>
-		var tweetDisplay = document.getElementById('tweet');
-		var dateDisplay = document.getElementById('date');
-		var mediaDisplay = document.getElementById('tweet_media');
-		var tweetID = null;
-		var allLang = ['ARABIC', 'ENGLISH', 'FRENCH', 'PORTUGUESE', 'SPANISH', 'THAI'];
-
-		// allLang.eachLayer(function (layer) {
-
-		let hover = function (lang) {
-
-			map.on('mousemove', lang, (l) => {
-
-				map.getCanvas().style.cursor = 'pointer';
-				// set variables equal to the current tweet's text and date
-				var tweetText = (l.features[0].properties.text);
-				var tweetDate = (l.features[0].properties.date);
-				var tweetMediaURL = (l.features[0].properties.media_url);
-				// check if undefined...?
-
-				console.log(l.features);
-
-				// check whether features exist
-				if (l.features.length > 0) {
-					// display the text, date, and relevant media in the tweet box
-					tweetDisplay.textContent = tweetText;
-					dateDisplay.textContent = tweetDate;
-					mediaDisplay.src = tweetMediaURL;
-
-					// if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
-					if (tweetID) {
-						map.removeFeatureState({
-							source: lang,
-							id: id,
-						});
-					};
-
-					tweetID = l.features[0].id;
-
-					// when the mouse moves over the layer, update the feature state for the feature under the mouse
-					map.setFeatureState({
-						source: lang,
-						id: tweetID,
-					},
-						{ hover: true }
-					);
-				}
-			});
-
-			map.on('mouseleave', lang, function () {
-				if (tweetID) {
-					map.setFeatureState({
-						source: lang,
-						id: tweetID,
-					},
-						{ hover: false });
-				};
-
-				tweetID = null;
-
-				// remove the information from the previously hovered feature from the tweet box
-				tweetDisplay.textContent = '';
-				dateDisplay.textContent = '';
-				mediaDisplay.src = '';
-
-				// reset the cursor style back to map pan hand
-				map.getCanvas().style.cursor = '';
-			});
-
-		};
-
-		allLang.forEach(function (lang) {
-			hover(lang);
-
-		});
-
-	</script>
-
-	<!-- Tab navigation functionality for the map, chart, and process documentation -->
-	<script>
-		function openTab(tabName) {
-			var i;
-			var x = document.getElementsByClassName('tab');
-			for (i = 0; i < x.length; i++) {
-				x[i].style.display = "none";
-			}
-			document.getElementById(tabName).style.display = "inline-block";
-		}
-	</script>
-	</div>
-
-</body>
-
-</html>
+    <body>
+    
+        <div class='sidebar'>
+            <h1> Mapping the Twitterverse: Wildlife Safari Edition </h1>
+            <!-- <h2> mapping animal encounters </h2> -->
+            <div class='tabBar'>
+                <div class='tabButton' width = 40px height = 40px onclick="openTab('map')">Map</div>
+                <div class='tabButton' width = 40px height = 40px onclick="openTab('chart')">Charts</div>
+                <div class='tabButton' width = 40px height = 40px onclick="openTab('process')">Process & Code</div>
+                <br>
+            </div>
+            <div id="intro" class="text">
+                Wildlife is all around us. Sometimes we take notice and share them on Twitter. This project showcases the tweets that included "wildlife"
+                in various languages listed below between March 21, 2021 and March 28, 2021.
+                <ul>
+                    <li> <b> Arabic: </b> الحيواناتالبرية</li>
+                    <li> <b> English: </b> wildlife </li>
+                    <li> <b> French: </b> faune </li>
+                    <li> <b> Portuguese: </b> animais selvagens </li>
+                    <li> <b> Spanish: </b> fauna silvestre </li>
+                    <li> <b> Thai: <b> สัตว์ป่า </li>
+                </ul>
+                <div id="footer">
+                    Created and designed by Anna Campbell and Roseanna Yip for ARTG 6100 Information Design Studio 2: Dynamic Mapping and Models, Spring 2021, IDDV Program, Northeastern University.
+                </div>
+            </div>
+        </div>
+    
+        <!-- start display map -->
+        <div id='map' class='tab'>
+    
+            <!-- display tweet deets -->
+            <div class='tweetBox'>
+                <div id='leftTBcolumn' class='box-content'>
+                    <div>
+                        <h3 style="color:#2C505C; font-family:'Playfair Display';">Tweet:  </style> <span id='tweet'></span>
+                    </div>
+                    <!-- <br> -->
+                    <div>
+                        <h3 style="color:#2C505C; font-family:'Playfair Display';">Date:  </style> <span id='date'></span>
+                    </div>
+                </div>
+                <div id='rtTBcolumn' class='box-content'>
+                    <div> <span> <img id='tweet_media' src=''> </img> </div>
+                </div>
+            </div>
+    
+            <!-- display filter menu -->
+            <div id='menu' --> </div>
+    
+            <!-- end display map -->
+        </div>
+    
+    
+        <div id=chart class='tab'>
+            <h3> Charts </h3>
+            <img style="padding-left: 30px; padding-top: 30px;" src="Wildlife_Stacked_Bar_Chart_v6.svg" width="800" alt="Wildlife Stacked Bar Chart">
+        </div>
+    
+        <div id='process' class='tab'>
+            <h3> To complete this project, we: </h3>
+            <ol>
+                <li> Collected data (tweets from the past 7 days containing the word 'wildlife') using Twitter's API (recent search endpoint) using the code below</li>
+                <li> Repeated the process for our keyword in six different languages </li>
+                <li> Converted the data from its output JSON file to an EXCEL file for formatting</li>
+                <li> Converted the formatted EXCEL file to a CSV file for upload</li>
+                <li> Uploaded the CSV file to <a href='https://www.mapbox.com/mapbox-studio'>Mapbox Studio</a> and created a map style
+                </li>
+                <li> Created a GitHub repository and page to host our content</li>
+                <li> Embedded the map into the HTML index file within our repository</li>
+                <li> Create a stacked bar chart using RStudio and Adobe Illustrator and added it to the HTML file</li>
+                <li> Added CSS rules for styling and cleaned up the HTML file</li>
+            </ol>
+    
+            <h3> Here's our code: </h3>
+            <h4> Here's a sample of the code we used to scrape Twitter based on <a
+                    href='https://github.com/pmiguelcruz/twitter_recent_search_v2_standard/blob/main/twitter_recent_search_v2_standard.js'>Professor
+                    Pedro Cruz's code</a>. </h4>
+    
+            <prettyify linenums=1>
+                <pre class="prettyprint">
+        <code class = 'scroll'>
+    const needle = require('needle');  // requires library to make HTTP requests
+    const fs = require('fs');  // requires library to save files
+    const token = "YOUR_BEARER_TOKEN";  // this is your bearer token
+    
+    const endpointUrl = "https://api.twitter.com/2/tweets/search/recent";  // End-point for recent search
+    //const endpointUrl = "https://api.twitter.com/2/tweets/search/all";  // This would be the end-point for the full historical search, only available for academic licenses
+    
+    
+    /** This function simply puts a request given a certain 'query'
+    *  and a batch of paginated results indicated in 'nextToken' */
+    
+    async function getRequest(query, nextToken) {
+    
+    // builds a query object to send
+    function buildQuery() {
+    let q = {
+        "query": query,  // the query
+        "max_results": 100,  // 100 is the max results per requests for standard licenses in sandboxed environments
+        "expansions": "geo.place_id,attachments.media_keys",  // whenever a tweet has geographical information in the form a of place_id, get more info on that place_id, and grab media
+        "tweet.fields": "author_id,created_at,geo",  // by default the Tweet id and and the text are returned, but here we're also including the author_id, the time of publishing, and its geographical features
+        "place.fields": "geo,name,full_name,place_type";  // the additional information associated with a place_id, namely its name and a geo object with geographical coordinates, either in the form of a point or a bounding box
+        "media.fields": "preview_image_url,url" // grab media URLs
+    };
+    // the nextToken paramenter is optional (as there is none in the first request)
+    // but if a nextToken was passed, then it inserts it into the query object
+    if (nextToken !== undefined) q["next_token"] = nextToken;
+    return q;
+    }
+    
+    const response = await needle('get', endpointUrl, buildQuery(), {
+    headers: {
+        "User-Agent": "v2RecentSearchJS",  // Can be whatever you want
+        "authorization": "Bearer " + token  // Attaches your Bearer token to the header of the request
+    }
+    })
+    return response.body; // Returns the contents of the response
+    }
+    
+    
+    /** async funtions enable us to stop the program to wait on requests
+    *  this function is the core of the program and where execution starts */
+    
+    (async function () {
+    
+    /** an anonymous function that gets a whole batch of tweet reponses
+    *  and only adds the ones with geo information to 'array' */
+    function filterTweets(array, batch) {
+    batch.data.forEach(tweet => {
+        if (tweet["geo"] !== undefined) {
+            /* expands place_id */
+            if (tweet.geo["place_id"] !== undefined) {
+                /* associates the place_id with the expanded information on place_ids in the response */
+                let expanded_geo = batch.includes.places.find(place => {
+                    return place.id == tweet.geo.place_id;
+                });
+                // adds new variable to tweet object called 'place_info'
+                tweet.place_info = expanded_geo;
+            }
+            if (tweet['place_info']['geo']['bbox'] == !undefined) {
+                //average of the bbox
+                /*
+                bbox[0] -> x of bottom left corner
+                bbox[1] -> y of bottom left corner
+                bbox[2] -> x of top right corner
+                bbox[3] -> y of top right corner
+                */
+    
+                let xa = (tweet.place_info.geo.bbox[0] + tweet.place_info.geo.bbox[2]) / 2
+                let ya = (tweet.place_info.geo.bbox[1] + tweet.place_info.geo.bbox[3]) / 2
+    
+                tweet.place_info.geo.center = [xa, ya];
+            }
+    
+    
+            if (tweet.attachments !== undefined) {
+                // if (tweet.attachments['media_keys'] !== undefined) {
+                let mediaKey = tweet.attachments.media_keys[0];
+                /* associates the media_keys with the expanded information in the response */
+                let relevantMedia = batch.includes.media.find(mediaEntry => {
+                    return mediaEntry.media_key == mediaKey
+                });
+    
+                // adds new variable to tweet object called 'media_url'
+                if (relevantMedia.type == 'photo') {
+                    tweet.media_url = relevantMedia.url;
+                }
+                else if (relevantMedia.type == 'video') {
+                    tweet.media_url = relevantMedia.preview_image_url;
+                }
+            }
+    
+            array.push(tweet);
+        }
+    });
+    
+    }
+    
+    let filteredTweets = []; //array to keep all collected tweets
+    
+    const query = "wildlife -is:retweet"; // we are searching for the word 'wildlife' but only in tweets that are *not* retweets since retweets never have geo information
+    let response = await getRequest(query);  // finally, put the request and wait for the response
+    //console.log(response);  // DEBUG
+    const nGeoTweets = 500;  // after how many collected tweets with geo info are stopping execution (in this example: 500)
+    while (response.meta["next_token"] !== undefined) {
+    response = await getRequest(query, response.meta.next_token);
+    filterTweets(filteredTweets, response);
+    console.log(filteredTweets.length); // DEBUG
+    await sleep(2100);  /*  sleeps the program for 2.1seconds : 
+                the standard rate limit is 450 requests per 15 min time period.
+                If you make more than 450 requests in less than 15 mins, the API
+                will block further requests until the 15 mins period is over;
+                Since the percentage of tweets with geo information is low you will 
+                need to place more than 450 requets (remember that each requests returns 100 tweets)
+                In order to stay under the rate limit and leave the program executing in the
+                background collecting tweets, only one request every 2 seconds should be placed */
+    
+    //  if we have enough tweets, stops collecting                        
+    if (filteredTweets.length >= nGeoTweets) break;
+    
+    }
+    
+    console.log("TWEETS WITH GEO: " + filteredTweets.length); // DEBUG
+    console.log(filteredTweets); // DEBUG
+    fs.writeFileSync("English.json", JSON.stringify(filteredTweets)); // Save the results to a file in the disk
+    process.exit(); // terminates the program
+    })();
+    
+    /** Utility function that sleeps the program for 'ms' milliseconds */
+    function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+    }
+        </code>
+        </pre>
+        </div>
+    
+    
+        <!--build map with Mapbox GL JS script -->
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiYW5uYS1uaXJ2YW5hIiwiYSI6ImNraWNkdTNnbDBxN2wyeGw2NWNwd3k0d2EifQ.fkhFRK0trir8P5JOg82OXA';
+            var map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: 'mapbox://styles/anna-nirvana/ckmtm4z4c45gf18pg08luga6b', // custom style url from https://studio.mapbox.com/
+                center: [-50, 50], // starting position
+                zoom: .8, // starting zoom
+                layout: {
+                    // make layer visible by default
+                    'visibility': 'visible',
+                }
+            });
+    
+            // FILTER BY LANGUAGE LAYER
+            //enumerate ids of the layers
+            var toggleableLayerIds = ['Arabic', 'English', 'French', 'Portuguese', 'Spanish', 'Thai'];
+    
+            // set up the corresponding toggle button for each layer
+            for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+    
+                var link = document.createElement('a');
+                link.href = '#';
+                link.className = 'active';
+                link.textContent = id;
+    
+                link.onclick = function (e) {
+                    var clickedLayer = this.textContent;
+                    e.preventDefault();
+                    e.stopPropagation();
+    
+                    var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+    
+                    //toggle layer visibility by changing the layout object's visibility property
+                    if (visibility === 'visible') {
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                        this.className = '';
+                    } else {
+                        this.className = 'active';
+                        map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                    }
+                };
+    
+                var layers = document.getElementById('menu');
+                layers.appendChild(link);
+            }
+        </script>
+    
+        <!-- display tweet text and formatted date in the "tweet box" -->
+        <script>
+            var tweetDisplay = document.getElementById('tweet');
+            var dateDisplay = document.getElementById('date');
+            var mediaDisplay = document.getElementById('tweet_media');
+            var tweetID = null;
+            var allLang = ['Arabic', 'English', 'French', 'Portuguese', 'Spanish', 'Thai'];
+    
+            // allLang.eachLayer(function (layer) {
+    
+            let hover = function (lang) {
+    
+                map.on('mousemove', lang, (l) => {
+    
+                    map.getCanvas().style.cursor = 'pointer';
+                    // set variables equal to the current tweet's text and date
+                    var tweetText = (l.features[0].properties.text);
+                    var tweetDate = (l.features[0].properties.date);
+                    var tweetMediaURL = (l.features[0].properties.media_url);
+                    // check if undefined...?
+    
+                    console.log(l.features);
+    
+                    // check whether features exist
+                    if (l.features.length > 0) {
+                        // display the text, date, and relevant media in the tweet box
+                        tweetDisplay.textContent = tweetText;
+                        dateDisplay.textContent = tweetDate;
+                        mediaDisplay.src = tweetMediaURL;
+    
+                        // if tweetID for the hovered feature is not null, use removeFeatureState to reset to the default behavior
+                        if (tweetID) {
+                            map.removeFeatureState({
+                                source: lang,
+                                id: id,
+                            });
+                        };
+    
+                        tweetID = l.features[0].id;
+    
+                        // when the mouse moves over the layer, update the feature state for the feature under the mouse
+                        map.setFeatureState({
+                            source: lang,
+                            id: tweetID,
+                        },
+                            { hover: true }
+                        );
+                    }
+                });
+    
+                map.on('mouseleave', lang, function () {
+                    if (tweetID) {
+                        map.setFeatureState({
+                            source: lang,
+                            id: tweetID,
+                        },
+                            { hover: false });
+                    };
+    
+                    tweetID = null;
+    
+                    // remove the information from the previously hovered feature from the tweet box
+                    tweetDisplay.textContent = '';
+                    dateDisplay.textContent = '';
+                    mediaDisplay.src = '';
+    
+                    // reset the cursor style back to map pan hand
+                    map.getCanvas().style.cursor = '';
+                });
+    
+            };
+    
+            allLang.forEach(function (lang) {
+                hover(lang);
+    
+            });
+    
+        </script>
+    
+        <!-- Tab navigation functionality for the map, chart, and process documentation -->
+        <script>
+            function openTab(tabName) {
+                var i;
+                var x = document.getElementsByClassName('tab');
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                document.getElementById(tabName).style.display = "inline-block";
+            }
+        </script>
+        </div>
+    
+    </body>
+    
+    </html>
+    
