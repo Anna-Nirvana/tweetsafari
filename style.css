@@ -192,7 +192,6 @@ pre code {
 }
 
 #chart {
-    padding: 20px;
     position: absolute;
     border-radius: 4px;
     padding: 5px;
@@ -214,9 +213,6 @@ pre code {
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Playfair Display', sans-serif;
     color: Black;
-    text-transform:capitalize;
-    font-variant:small-caps;
-    font-weight:bold italic;
 }
 
 #menu a {
