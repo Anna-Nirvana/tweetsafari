@@ -35,19 +35,19 @@
 			<button class='tabButton' onclick="openTab('process')">Process & Code</button>
 			<br>
 		</div>
-		<img src='./bear-head.png' id='Smokey'> </img>
+		<img src='./paw.svg' id='Paw'> </img>
 		<div id="intro" class="text">
 			Wildlife is all around us. Sometimes we take notice and share them on <a
 				href='https://www.twitter.com/'>Twitter</a>. This project showcases the tweets that included "wildlife"
-			in various languages listed below between March 21, 2021 and March 28, 2021.
-			<ul>
+			in six different languages listed below between March 21, 2021 and March 28, 2021.
+			<ol>
 				<li> <b> Arabic: </b> الحيواناتالبرية</li>
 				<li> <b> English: </b> wildlife </li>
 				<li> <b> French: </b> faune </li>
 				<li> <b> Portuguese: </b> animais selvagens </li>
 				<li> <b> Spanish: </b> fauna silvestre </li>
 				<li> <b> Thai: <b> สัตว์ป่า </li>
-			</ul>
+			</ol>
 			<div id="footer">
 				Created and designed by Anna Campbell and Roseanna Yip for ARTG 6100 Information Design Studio 2: Dynamic Mapping and Models, Spring 2021, IDDV Program, Northeastern University.
 			</div>
@@ -61,11 +61,11 @@
 		<div class='tweetBox'>
 			<div id='leftTBcolumn' class='box-content'>
 				<div>
-					<h3 style="color:maroon; font-family:'Playfair Display';">Tweet:  </style> <span id='tweet'></span>
+					<h3 style="color:#A1BEC9; font-family:'Playfair Display';">Tweet:  </style> <span id='tweet'></span>
 				</div>
 				<!-- <br> -->
 				<div>
-					<h3 style="color:maroon; font-family:'Playfair Display';">Date:  </style> <span id='date'></span>
+					<h3 style="color:#2C505C; font-family:'Playfair Display';">Date:  </style> <span id='date'></span>
 				</div>
 			</div>
 			<div id='rtTBcolumn' class='box-content'>
@@ -81,13 +81,9 @@
 
 
 	<div id=chart class='tab'>
-		<h3> Map Observation </h3>
-		<p>The majority of tweets are from the United States and United Kingdom.<p>
-		<img src="map_observation.svg" width="600" alt="Map Analysis">
-		
 		<h3> Chart Observation </h3>
-		<p>There is a significant increase of wildlife tweets on March 27th and March 28th, which falls on a weekend.<p>
-		<img src="Wildlife_Stacked_Bar_Chart_v4.svg" width="500" alt="Wildlife Stacked Bar Chart">
+		<p>There is a significant increase of wildlife tweets between March 26th and March 28th, which falls on Friday and the weekend.<p>
+		<img src="Wildlife_Stacked_Bar_Chart_v5.svg" width="500" alt="Wildlife Stacked Bar Chart">
 	</div>
 
 	<div id='process' class='tab'>
@@ -265,7 +261,7 @@ return new Promise(resolve => setTimeout(resolve, ms));
 
 		// FILTER BY LANGUAGE LAYER
 		//enumerate ids of the layers
-		var toggleableLayerIds = ['Arabic', 'English', 'French', 'Portuguese', 'Spanish', 'Thai'];
+		var toggleableLayerIds = ['ARABIC', 'ENGLISH', 'FRENCH', 'PORTUGUESE', 'SPANISH', 'THAI'];
 
 		// set up the corresponding toggle button for each layer
 		for (var i = 0; i < toggleableLayerIds.length; i++) {
