@@ -168,6 +168,7 @@ h1 {
 pre code {
     background-color: #eee;
     border: 1px solid #999;
+    left-padding: 2px;
     display: block;
     width: 95%;
     margin: 1em;
@@ -176,7 +177,7 @@ pre code {
 }
 
 .prettyprint {
-    background-color: #2C505C;
+    background-color: #E6EBD8;
     margin: 1px;
     padding: 5px;
 }
