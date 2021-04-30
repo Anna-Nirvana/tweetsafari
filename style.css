@@ -64,7 +64,7 @@ li, p {
 }
 
 .tabButton {
-    font-family: 'Playfair Display', 'open sans';
+    font-family: 'Playfair Display SC', serif;
     size: 0vmax;
     border:none;
     outline:none;
@@ -232,7 +232,7 @@ pre code {
     border-radius: 3px;
     width: 120px;
     border: 1px solid rgba(0, 0, 0, 0.4);
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Playfair Display SC', serif;
     color: Black;
 }
 
