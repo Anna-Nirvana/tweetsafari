@@ -69,11 +69,12 @@ li, p {
     font-family: 'Playfair Display', 'open sans';
     size: 0vmax;
     border:none;
+    outline:none;
     position: relative;
     background-color: black;
-/*     color: whitesmoke; */
+    color: whitesmoke;
     font-style: bold;
-    opacity: 90;
+    opacity: 0.4;
     border-radius: 2px;
     margin-left: 2px;
     padding: 5px;
