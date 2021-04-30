@@ -10,6 +10,14 @@ a {
     color: #2C505C;
 }
 
+ul {
+  list-style-type:square;
+}
+
+ul, ol {
+  padding-bottom: 40px;
+}
+
 #map {
     position: fixed;
     top: 0;
@@ -17,15 +25,6 @@ a {
     width: 100%;
     height: 100vh;
     z-index: -3;
-}
-
-#Paw {
-    width: 30px;
-    height: 30px;
-    position: relative;
-    align-self: center;
-    size: relative;
-    margin-left: 5vw;
 }
 
 .sidebar {
@@ -65,7 +64,7 @@ li, p {
 }
 
 .tabButton {
-    font-family: 'Open Sans', 'Playfair Display';
+    font-family: 'Playfair Display', 'open sans';
     size: 0vmax;
     border:none;
     outline:none;
@@ -112,9 +111,8 @@ h1 {
     text-decoration-style: dotted;
 }
 
-h3 {
-    margin-left: 30px;
-/*     text-indent: 50px; */
+h3, h4 {
+  margin-left: 30px;
 }
 
 #footer {
