@@ -64,9 +64,11 @@ li, p {
     font-weight: lighter;
 }
 
-.tabButton, .button {
+.tab
+, .button {
     font-family: 'Playfair Display', 'open sans';
     size: 0vmax;
+    border:none;
     position: relative;
     background-color: black;
     color: whitesmoke;
@@ -106,6 +108,10 @@ h1 {
     text-align: left;
     text-decoration: rgba(0, 0, 0, 0.25);
     text-decoration-style: dotted;
+}
+
+h3 {
+    margin-left: 40px;
 }
 
 #footer {
