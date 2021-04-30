@@ -112,6 +112,7 @@ h1 {
 
 h3 {
     margin-left: 40px;
+    text-indent: 50px;
 }
 
 #footer {
@@ -123,6 +124,7 @@ h3 {
 
 /* styling for the tweet box */
 .tweetBox {
+    text-indent: 50px;
     position: absolute;
     font-family: 'Playfair Display', sans-serif;
     margin-bottom: 5vh;
