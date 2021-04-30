@@ -97,7 +97,7 @@ li, p {
     color: #F2F1EB;
     size: smaller;
     font-family: 'Playfair Display', sans-serif;
-    position: relative;
+    position: sticky;
 }
 
 h1 {
