@@ -6,8 +6,13 @@ body, html {
     background-color: #F2F1EB;
 }
 
-a {
+/*a {
     color: rgb(29, 91, 185);
+}
+*/
+
+a {
+    color: #E6EBD8;
 }
 
 #map {
@@ -19,7 +24,7 @@ a {
     z-index: -3;
 }
 
-#Smokey {
+#Paw {
     width: 15vw;
     height: relative;
     position: relative;
@@ -34,7 +39,7 @@ a {
     z-index: 3;
     background: #000000;
     background-blend-mode: overlay;
-    padding: 15px;
+    padding: 35px;
     text-align: left;
     opacity: 80%;
     position: absolute;
@@ -87,13 +92,13 @@ li, p {
 
 .text {
     font-size: 14pt;
-    font-family: 'Arial Light', 'open sans';
+    font-family: 'Playfair Display', sans-serif;
 }
 
 #intro {
     color: #F2F1EB;
     size: smaller;
-    font-family: 'Arial', 'opens sans';
+    font-family: 'Playfair Display', sans-serif;
     position: relative;
 }
 
@@ -178,7 +183,6 @@ pre code {
 .prettyprint {
     background-color: #a1bec9;
     margin: 10px;
-    border-radius: 30px;
     padding: 5px;
 }
 
