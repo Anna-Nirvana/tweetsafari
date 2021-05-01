@@ -10,13 +10,22 @@ a {
     color: #2C505C;
 }
 
-li {
+ul {
   list-style-type:square;
 }
 
 ul, ol {
   padding-bottom: 40px;
 }
+
+li, p {
+    font-weight: lighter;
+}
+
+p {
+    margin-left: 30px;
+}
+
 
 #map {
     position: fixed;
@@ -57,14 +66,6 @@ ul, ol {
     height: 40vh;
     overflow: auto;
     padding: 10px;
-}
-
-li, p {
-    font-weight: lighter;
-}
-
-p {
-    margin-left: 30%;
 }
 
 .tabButton {
