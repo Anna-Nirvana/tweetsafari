@@ -10,7 +10,7 @@ a {
     color: #2C505C;
 }
 
-ul, li {
+li {
   list-style-type:square;
 }
 
@@ -61,6 +61,10 @@ ul, ol {
 
 li, p {
     font-weight: lighter;
+}
+
+p {
+    margin-left: 30%;
 }
 
 .tabButton {
