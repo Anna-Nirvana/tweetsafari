@@ -22,10 +22,13 @@ li, p {
     font-weight: lighter;
 }
 
+ol {
+  margin-left: 10px;
+}
+
 p {
     margin-left: 30px;
 }
-
 
 #map {
     position: fixed;
