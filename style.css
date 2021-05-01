@@ -206,7 +206,7 @@ pre code {
 #chart {
     position: absolute;
     border-radius: 4px;
-    padding: 5px;
+    padding: 20px;
     align-items: left;
     margin-left: 30%;
     display: none;
@@ -233,7 +233,7 @@ pre code {
     /* position: sticky; */
 }
 
-#chart2Container {
+#chart1Container {
     align-items: center;
 }
 
