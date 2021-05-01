@@ -10,7 +10,7 @@ a {
     color: #2C505C;
 }
 
-ul {
+ul, li {
   list-style-type:square;
 }
 
@@ -234,6 +234,16 @@ pre code {
     border: 1px solid rgba(0, 0, 0, 0.4);
     font-family: 'Playfair Display SC', serif;
     color: Black;
+}
+
+#chartStack {
+    display: block;
+    text-align: justify;
+    /* position: sticky; */
+}
+
+#chart2Container {
+    align-items: center;
 }
 
 #menu a {
